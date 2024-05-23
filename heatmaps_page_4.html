@@ -1,0 +1,1054 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Heatmaps - Página 4</title>
+        <style>
+            body { font-family: Arial, sans-serif; text-align: center; }
+            .map-container { margin-bottom: 20px; }
+            .map-title { font-size: 1.2em; margin-top: 20px; font-style: italic; }
+            .species-container { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+            .species-info { margin-left: 20px; text-align: left; }
+            .species-info img { max-width: 300px; height: auto; }
+            .subheader { font-size: 1em; margin-top: 15px; font-style: normal; }
+            .navbar { display: flex; justify-content: center; margin-bottom: 20px; }
+            .navbar select { font-size: 1em; padding: 5px; }
+            .bottom-nav { display: flex; justify-content: center; margin-top: 20px; }
+            .bottom-nav a { margin: 0 5px; text-decoration: none; font-size: 1.2em; padding: 10px 20px; background-color: #007BFF; color: white; border-radius: 5px; }
+            .bottom-nav a:hover { background-color: #0056b3; }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    </head>
+    <body>
+        <h2>Observações de aves no campus da USP via iNaturalist</h2>
+        <div class="navbar">
+            <select id="species-select" onchange="navigateToSpecies()">
+                <option value="">Selecione uma espécie</option>
+    <option value="heatmaps_page_1.html#Accipiter_striatus">Accipiter striatus</option><option value="heatmaps_page_1.html#Amazonetta_brasiliensis">Amazonetta brasiliensis</option><option value="heatmaps_page_1.html#Anhinga_anhinga">Anhinga anhinga</option><option value="heatmaps_page_1.html#Aramides_cajaneus">Aramides cajaneus</option><option value="heatmaps_page_1.html#Aramides_saracura">Aramides saracura</option><option value="heatmaps_page_1.html#Ardea_alba">Ardea alba</option><option value="heatmaps_page_1.html#Ardea_cocoi">Ardea cocoi</option><option value="heatmaps_page_1.html#Asio_stygius">Asio stygius</option><option value="heatmaps_page_1.html#Athene_cunicularia">Athene cunicularia</option><option value="heatmaps_page_1.html#Basileuterus_culicivorus">Basileuterus culicivorus</option><option value="heatmaps_page_2.html#Brotogeris_chiriri">Brotogeris chiriri</option><option value="heatmaps_page_2.html#Brotogeris_tirica">Brotogeris tirica</option><option value="heatmaps_page_2.html#Bubulcus_ibis">Bubulcus ibis</option><option value="heatmaps_page_2.html#Buteo_brachyurus">Buteo brachyurus</option><option value="heatmaps_page_2.html#Butorides_striata">Butorides striata</option><option value="heatmaps_page_2.html#Camptostoma_obsoletum">Camptostoma obsoletum</option><option value="heatmaps_page_2.html#Caracara_plancus">Caracara plancus</option><option value="heatmaps_page_2.html#Caracara_plancus_plancus">Caracara plancus plancus</option><option value="heatmaps_page_2.html#Celeus_flavescens">Celeus flavescens</option><option value="heatmaps_page_2.html#Celeus_flavescens_flavescens">Celeus flavescens flavescens</option><option value="heatmaps_page_3.html#Chaetura_meridionalis">Chaetura meridionalis</option><option value="heatmaps_page_3.html#Chloroceryle_amazona">Chloroceryle amazona</option><option value="heatmaps_page_3.html#Chlorophonia_cyanocephala">Chlorophonia cyanocephala</option><option value="heatmaps_page_3.html#Chlorostilbon_lucidus">Chlorostilbon lucidus</option><option value="heatmaps_page_3.html#Coereba_flaveola">Coereba flaveola</option><option value="heatmaps_page_3.html#Colaptes_campestris">Colaptes campestris</option><option value="heatmaps_page_3.html#Colaptes_campestris_campestris">Colaptes campestris campestris</option><option value="heatmaps_page_3.html#Colaptes_melanochloros">Colaptes melanochloros</option><option value="heatmaps_page_3.html#Columba_livia_domestica">Columba livia domestica</option><option value="heatmaps_page_3.html#Conirostrum_speciosum">Conirostrum speciosum</option><option value="heatmaps_page_4.html#Coragyps_atratus">Coragyps atratus</option><option value="heatmaps_page_4.html#Crotophaga_ani">Crotophaga ani</option><option value="heatmaps_page_4.html#Cyclarhis_gujanensis">Cyclarhis gujanensis</option><option value="heatmaps_page_4.html#Dacnis_cayana">Dacnis cayana</option><option value="heatmaps_page_4.html#Daptrius_chimachima">Daptrius chimachima</option><option value="heatmaps_page_4.html#Diopsittaca_nobilis">Diopsittaca nobilis</option><option value="heatmaps_page_4.html#Dryobates_spilogaster">Dryobates spilogaster</option><option value="heatmaps_page_4.html#Dryocopus_lineatus">Dryocopus lineatus</option><option value="heatmaps_page_4.html#Egretta_thula">Egretta thula</option><option value="heatmaps_page_4.html#Empidonomus_varius">Empidonomus varius</option><option value="heatmaps_page_5.html#Estrilda_astrild">Estrilda astrild</option><option value="heatmaps_page_5.html#Eupetomena_macroura">Eupetomena macroura</option><option value="heatmaps_page_5.html#Euphonia_chlorotica">Euphonia chlorotica</option><option value="heatmaps_page_5.html#Euphonia_violacea">Euphonia violacea</option><option value="heatmaps_page_5.html#Falco_femoralis">Falco femoralis</option><option value="heatmaps_page_5.html#Furnarius_rufus">Furnarius rufus</option><option value="heatmaps_page_5.html#Gallinula_galeata">Gallinula galeata</option><option value="heatmaps_page_5.html#Gnorimopsar_chopi">Gnorimopsar chopi</option><option value="heatmaps_page_5.html#Guira_guira">Guira guira</option><option value="heatmaps_page_5.html#Icterus_pyrrhopterus">Icterus pyrrhopterus</option><option value="heatmaps_page_6.html#Lepidocolaptes_angustirostris">Lepidocolaptes angustirostris</option><option value="heatmaps_page_6.html#Machetornis_rixosa">Machetornis rixosa</option><option value="heatmaps_page_6.html#Megaceryle_torquata">Megaceryle torquata</option><option value="heatmaps_page_6.html#Megarynchus_pitangua">Megarynchus pitangua</option><option value="heatmaps_page_6.html#Megascops_choliba">Megascops choliba</option><option value="heatmaps_page_6.html#Melanerpes_candidus">Melanerpes candidus</option><option value="heatmaps_page_6.html#Mesembrinibis_cayennensis">Mesembrinibis cayennensis</option><option value="heatmaps_page_6.html#Mimus_saturninus">Mimus saturninus</option><option value="heatmaps_page_6.html#Molothrus_bonariensis">Molothrus bonariensis</option><option value="heatmaps_page_6.html#Myiodynastes_maculatus">Myiodynastes maculatus</option><option value="heatmaps_page_7.html#Myiozetetes_similis">Myiozetetes similis</option><option value="heatmaps_page_7.html#Nannopterum_brasilianum">Nannopterum brasilianum</option><option value="heatmaps_page_7.html#Nycticorax_nycticorax">Nycticorax nycticorax</option><option value="heatmaps_page_7.html#Nyctidromus_albicollis">Nyctidromus albicollis</option><option value="heatmaps_page_7.html#Pachyramphus_validus">Pachyramphus validus</option><option value="heatmaps_page_7.html#Paroaria_coronata">Paroaria coronata</option><option value="heatmaps_page_7.html#Paroaria_dominicana">Paroaria dominicana</option><option value="heatmaps_page_7.html#Patagioenas_picazuro">Patagioenas picazuro</option><option value="heatmaps_page_7.html#Penelope_obscura">Penelope obscura</option><option value="heatmaps_page_7.html#Piaya_cayana">Piaya cayana</option><option value="heatmaps_page_8.html#Pipraeidea_melanonota">Pipraeidea melanonota</option><option value="heatmaps_page_8.html#Pitangus_sulphuratus">Pitangus sulphuratus</option><option value="heatmaps_page_8.html#Psittacara_leucophthalmus">Psittacara leucophthalmus</option><option value="heatmaps_page_8.html#Pyrocephalus_rubinus">Pyrocephalus rubinus</option><option value="heatmaps_page_8.html#Ramphastos_dicolorus">Ramphastos dicolorus</option><option value="heatmaps_page_8.html#Ramphastos_toco">Ramphastos toco</option><option value="heatmaps_page_8.html#Rupornis_magnirostris">Rupornis magnirostris</option><option value="heatmaps_page_8.html#Saltator_similis">Saltator similis</option><option value="heatmaps_page_8.html#Setophaga_pitiayumi">Setophaga pitiayumi</option><option value="heatmaps_page_8.html#Sicalis_flaveola">Sicalis flaveola</option><option value="heatmaps_page_9.html#Sirystes_sibilator">Sirystes sibilator</option><option value="heatmaps_page_9.html#Spizaetus_tyrannus">Spizaetus tyrannus</option><option value="heatmaps_page_9.html#Stilpnia_cayana">Stilpnia cayana</option><option value="heatmaps_page_9.html#Synallaxis_spixi">Synallaxis spixi</option><option value="heatmaps_page_9.html#Thalurania_glaucopis">Thalurania glaucopis</option><option value="heatmaps_page_9.html#Thamnophilus_caerulescens">Thamnophilus caerulescens</option><option value="heatmaps_page_9.html#Thraupis_palmarum">Thraupis palmarum</option><option value="heatmaps_page_9.html#Thraupis_sayaca">Thraupis sayaca</option><option value="heatmaps_page_9.html#Tityra_cayana">Tityra cayana</option><option value="heatmaps_page_9.html#Troglodytes_aedon">Troglodytes aedon</option><option value="heatmaps_page_10.html#Troglodytes_aedon_musculus">Troglodytes aedon musculus</option><option value="heatmaps_page_10.html#Turdus_amaurochalinus">Turdus amaurochalinus</option><option value="heatmaps_page_10.html#Turdus_flavipes">Turdus flavipes</option><option value="heatmaps_page_10.html#Turdus_leucomelas">Turdus leucomelas</option><option value="heatmaps_page_10.html#Turdus_rufiventris">Turdus rufiventris</option><option value="heatmaps_page_10.html#Tyrannus_melancholicus">Tyrannus melancholicus</option><option value="heatmaps_page_10.html#Tyrannus_melancholicus_melancholicus">Tyrannus melancholicus melancholicus</option><option value="heatmaps_page_10.html#Vanellus_chilensis">Vanellus chilensis</option><option value="heatmaps_page_10.html#Vireo_chivi">Vireo chivi</option><option value="heatmaps_page_10.html#Zenaida_auriculata">Zenaida auriculata</option><option value="heatmaps_page_11.html#Zonotrichia_capensis">Zonotrichia capensis</option>
+            </select>
+        </div>
+    
+        <div class="species-container" id="Coragyps_atratus">
+            <div class="map-container">
+                <div class="map-title"><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&taxon_id=4765" target="_blank">31. Coragyps atratus</a></div>
+                <div class="subheader">Observações em Nível de Pesquisa: 28</div>
+                <div style="width: 100%; height: 400px;"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_ed31d86cf4a793eabcb52fcf08cfd781 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_ed31d86cf4a793eabcb52fcf08cfd781&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_ed31d86cf4a793eabcb52fcf08cfd781 = L.map(
+                &quot;map_ed31d86cf4a793eabcb52fcf08cfd781&quot;,
+                {
+                    center: [-23.561415049003568, -46.727660383903576],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_1280e9a6ae916944ae20e347c9dc367f = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_1280e9a6ae916944ae20e347c9dc367f.addTo(map_ed31d86cf4a793eabcb52fcf08cfd781);
+        
+    
+            var heat_map_e099b66989cd1aa71aa7b7dd96770d34 = L.heatLayer(
+                [[-23.5578787169, -46.7211819068, 1.0], [-23.558146465, -46.7361765689, 1.0], [-23.566575, -46.7306033333, 1.0], [-23.5634530072, -46.7251425236, 1.0], [-23.558614603, -46.7259130085, 1.0], [-23.5669750674, -46.7307461637, 1.0], [-23.5619411469, -46.733001709, 1.0], [-23.5611507589, -46.7230779356, 1.0], [-23.5591396849, -46.7156604589, 1.0], [-23.5594168814, -46.7269140822, 1.0], [-23.5664006702, -46.7309772434, 1.0], [-23.5658737453, -46.7238969728, 1.0], [-23.5607696695, -46.7369173865, 1.0], [-23.5666466667, -46.731175, 1.0], [-23.5524733056, -46.7280242471, 1.0], [-23.5578384562, -46.7336606563, 1.0], [-23.5629152237, -46.7291950935, 1.0], [-23.560836792, -46.7305793762, 1.0], [-23.5625578905, -46.7265139617, 1.0], [-23.5518726776, -46.7299421171, 1.0], [-23.5578948786, -46.7196568011, 1.0], [-23.559604, -46.7241305, 1.0], [-23.5603480624, -46.7318236912, 1.0], [-23.5573716667, -46.71505, 1.0], [-23.5659014036, -46.7319798097, 1.0], [-23.5672780658, -46.7220714196, 1.0], [-23.5648648282, -46.7302340269, 1.0], [-23.5648820379, -46.7302447557, 1.0]],
+                {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
+            );
+        
+    
+            heat_map_e099b66989cd1aa71aa7b7dd96770d34.addTo(map_ed31d86cf4a793eabcb52fcf08cfd781);
+        
+    
+            map_ed31d86cf4a793eabcb52fcf08cfd781.fitBounds(
+                [[-23.5672780658, -46.7369173865], [-23.5518726776, -46.71505]],
+                {}
+            );
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+            </div>
+            <div class="species-info">
+                <a href="https://www.inaturalist.org/observations/66445893" target="_blank">
+                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/107116061/medium.jpeg" alt="Coragyps atratus">
+                </a>
+                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2017-06-28)</p>
+            </div>
+        </div>
+        
+        <div class="species-container" id="Crotophaga_ani">
+            <div class="map-container">
+                <div class="map-title"><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&taxon_id=1971" target="_blank">32. Crotophaga ani</a></div>
+                <div class="subheader">Observações em Nível de Pesquisa: 24</div>
+                <div style="width: 100%; height: 400px;"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_b5def98931f9bff4d8ffa31597683ee8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_b5def98931f9bff4d8ffa31597683ee8&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_b5def98931f9bff4d8ffa31597683ee8 = L.map(
+                &quot;map_b5def98931f9bff4d8ffa31597683ee8&quot;,
+                {
+                    center: [-23.557770034400004, -46.72271108827917],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5a4c962c64254a2b4c98a624f7a2010a = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_5a4c962c64254a2b4c98a624f7a2010a.addTo(map_b5def98931f9bff4d8ffa31597683ee8);
+        
+    
+            var heat_map_0c4c0433e6268b0d606939944a4fbd53 = L.heatLayer(
+                [[-23.555555005, -46.722574943, 1.0], [-23.5550778715, -46.7234973159, 1.0], [-23.5540447235, -46.725479126, 1.0], [-23.5581049771, -46.7237974029, 1.0], [-23.5578394415, -46.7237920385, 1.0], [-23.558116168, -46.7238188606, 1.0], [-23.5597271539, -46.7235188241, 1.0], [-23.553875077, -46.7254053551, 1.0], [-23.5518274455, -46.7292267797, 1.0], [-23.564555503, -46.7126558789, 1.0], [-23.5544045797, -46.7243763435, 1.0], [-23.5539234614, -46.7256116176, 1.0], [-23.5566789161, -46.7213873862, 1.0], [-23.5556302586, -46.7213803359, 1.0], [-23.5574545853, -46.7232802264, 1.0], [-23.5575554021, -46.7240595818, 1.0], [-23.5606241645, -46.7316389687, 1.0], [-23.5567617401, -46.721678378, 1.0], [-23.5597610513, -46.7234618036, 1.0], [-23.5575, -46.7263888889, 1.0], [-23.559888353, -46.7211768776, 1.0], [-23.5635212322, -46.7168410867, 1.0], [-23.5631966667, -46.7173166667, 1.0], [-23.5608570486, -46.7127014324, 1.0]],
+                {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
+            );
+        
+    
+            heat_map_0c4c0433e6268b0d606939944a4fbd53.addTo(map_b5def98931f9bff4d8ffa31597683ee8);
+        
+    
+            map_b5def98931f9bff4d8ffa31597683ee8.fitBounds(
+                [[-23.564555503, -46.7316389687], [-23.5518274455, -46.7126558789]],
+                {}
+            );
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+            </div>
+            <div class="species-info">
+                <a href="https://www.inaturalist.org/observations/43725672" target="_blank">
+                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/69351396/medium.jpeg" alt="Crotophaga ani">
+                </a>
+                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2017-02-17)</p>
+            </div>
+        </div>
+        
+        <div class="species-container" id="Cyclarhis_gujanensis">
+            <div class="map-container">
+                <div class="map-title"><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&taxon_id=17421" target="_blank">33. Cyclarhis gujanensis</a></div>
+                <div class="subheader">Observações em Nível de Pesquisa: 5</div>
+                <div style="width: 100%; height: 400px;"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_78401500043eec43d79b0fa9db1eca65 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_78401500043eec43d79b0fa9db1eca65&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_78401500043eec43d79b0fa9db1eca65 = L.map(
+                &quot;map_78401500043eec43d79b0fa9db1eca65&quot;,
+                {
+                    center: [-23.56042065132, -46.72348254508],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e96bb08077d39d83b8af9e41aff2ac4c = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_e96bb08077d39d83b8af9e41aff2ac4c.addTo(map_78401500043eec43d79b0fa9db1eca65);
+        
+    
+            var heat_map_b4ae0a23bca21cc773dc9cae8964eea2 = L.heatLayer(
+                [[-23.5593009079, -46.7235409682, 1.0], [-23.5597543997, -46.7238680833, 1.0], [-23.5589355706, -46.7249050446, 1.0], [-23.5591122729, -46.7249888061, 1.0], [-23.5650001055, -46.7201098232, 1.0]],
+                {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
+            );
+        
+    
+            heat_map_b4ae0a23bca21cc773dc9cae8964eea2.addTo(map_78401500043eec43d79b0fa9db1eca65);
+        
+    
+            map_78401500043eec43d79b0fa9db1eca65.fitBounds(
+                [[-23.5650001055, -46.7249888061], [-23.5589355706, -46.7201098232]],
+                {}
+            );
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+            </div>
+            <div class="species-info">
+                <a href="https://www.inaturalist.org/observations/43413652" target="_blank">
+                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/68880831/medium.jpeg" alt="Cyclarhis gujanensis">
+                </a>
+                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2015-08-29)</p>
+            </div>
+        </div>
+        
+        <div class="species-container" id="Dacnis_cayana">
+            <div class="map-container">
+                <div class="map-title"><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&taxon_id=10506" target="_blank">34. Dacnis cayana</a></div>
+                <div class="subheader">Observações em Nível de Pesquisa: 5</div>
+                <div style="width: 100%; height: 400px;"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_a999b848c3d520daa3cce5e253d793bb {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_a999b848c3d520daa3cce5e253d793bb&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_a999b848c3d520daa3cce5e253d793bb = L.map(
+                &quot;map_a999b848c3d520daa3cce5e253d793bb&quot;,
+                {
+                    center: [-23.562842073120002, -46.729753899079995],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_37702c0439e19f3cc121078f36d49639 = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_37702c0439e19f3cc121078f36d49639.addTo(map_a999b848c3d520daa3cce5e253d793bb);
+        
+    
+            var heat_map_5d44bcdd7d30e03e876ac2e3b47c0117 = L.heatLayer(
+                [[-23.5660415781, -46.7317176547, 1.0], [-23.5581670997, -46.7238568391, 1.0], [-23.5581703068, -46.7238334133, 1.0], [-23.5668448554, -46.7318503931, 1.0], [-23.5649865256, -46.7375111952, 1.0]],
+                {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
+            );
+        
+    
+            heat_map_5d44bcdd7d30e03e876ac2e3b47c0117.addTo(map_a999b848c3d520daa3cce5e253d793bb);
+        
+    
+            map_a999b848c3d520daa3cce5e253d793bb.fitBounds(
+                [[-23.5668448554, -46.7375111952], [-23.5581670997, -46.7238334133]],
+                {}
+            );
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+            </div>
+            <div class="species-info">
+                <a href="https://www.inaturalist.org/observations/200787853" target="_blank">
+                    <img src="https://static.inaturalist.org/photos/354317610/medium.jpeg" alt="Dacnis cayana">
+                </a>
+                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=gabrielsoto" target="_blank">gabrielsoto</a>, None (2018-09-10)</p>
+            </div>
+        </div>
+        
+        <div class="species-container" id="Daptrius_chimachima">
+            <div class="map-container">
+                <div class="map-title"><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&taxon_id=1432779" target="_blank">35. Daptrius chimachima</a></div>
+                <div class="subheader">Observações em Nível de Pesquisa: 4</div>
+                <div style="width: 100%; height: 400px;"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_74734e6ffbe9e94d3b44323740b9d27d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_74734e6ffbe9e94d3b44323740b9d27d&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_74734e6ffbe9e94d3b44323740b9d27d = L.map(
+                &quot;map_74734e6ffbe9e94d3b44323740b9d27d&quot;,
+                {
+                    center: [-23.562726787075, -46.72632002500001],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_44a7113656f59a8750abd277425d33ff = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_44a7113656f59a8750abd277425d33ff.addTo(map_74734e6ffbe9e94d3b44323740b9d27d);
+        
+    
+            var heat_map_a4ab34fa7c43163fec551f7b88d14f1f = L.heatLayer(
+                [[-23.5578787169, -46.7211819068, 1.0], [-23.56586418, -46.7243388576, 1.0], [-23.5651810568, -46.7298417538, 1.0], [-23.5619831946, -46.7299175818, 1.0]],
+                {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
+            );
+        
+    
+            heat_map_a4ab34fa7c43163fec551f7b88d14f1f.addTo(map_74734e6ffbe9e94d3b44323740b9d27d);
+        
+    
+            map_74734e6ffbe9e94d3b44323740b9d27d.fitBounds(
+                [[-23.56586418, -46.7299175818], [-23.5578787169, -46.7211819068]],
+                {}
+            );
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+            </div>
+            <div class="species-info">
+                <a href="https://www.inaturalist.org/observations/72164970" target="_blank">
+                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/117613409/medium.jpg" alt="Daptrius chimachima">
+                </a>
+                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=maria1580" target="_blank">maria1580</a>, cc-by-nc (2021-03-27)</p>
+            </div>
+        </div>
+        
+        <div class="species-container" id="Diopsittaca_nobilis">
+            <div class="map-container">
+                <div class="map-title"><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&taxon_id=72814" target="_blank">36. Diopsittaca nobilis</a></div>
+                <div class="subheader">Observações em Nível de Pesquisa: 65</div>
+                <div style="width: 100%; height: 400px;"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_cdfe7984a7291b3fdfe6c5a00d60179b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_cdfe7984a7291b3fdfe6c5a00d60179b&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_cdfe7984a7291b3fdfe6c5a00d60179b = L.map(
+                &quot;map_cdfe7984a7291b3fdfe6c5a00d60179b&quot;,
+                {
+                    center: [-23.561765167593844, -46.72644914256616],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_1a5b9d014be55ad01fa9e607340fbef6 = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_1a5b9d014be55ad01fa9e607340fbef6.addTo(map_cdfe7984a7291b3fdfe6c5a00d60179b);
+        
+    
+            var heat_map_96fefd2ef4a936c46bda397d13f4b6c5 = L.heatLayer(
+                [[-23.557953839, -46.7238585813, 1.0], [-23.5575014778, -46.7233925967, 1.0], [-23.5570980356, -46.7228162594, 1.0], [-23.5685206685, -46.7293842393, 1.0], [-23.5609822433, -46.724402435, 1.0], [-23.5592597723, -46.7279546565, 1.0], [-23.5676497035, -46.728900969, 1.0], [-23.5591757177, -46.7278988624, 1.0], [-23.5592544282, -46.7279422436, 1.0], [-23.5609919168, -46.7315922077, 1.0], [-23.5607248983, -46.7270267755, 1.0], [-23.5608348846, -46.7269287109, 1.0], [-23.5603287427, -46.7258904271, 1.0], [-23.5688302997, -46.7305137, 1.0], [-23.5687859, -46.7306580997, 1.0], [-23.5604881089, -46.7328736371, 1.0], [-23.559082042, -46.7315719479, 1.0], [-23.5618507804, -46.7284229271, 1.0], [-23.559631051, -46.7240206259, 1.0], [-23.5594860594, -46.7144421861, 1.0], [-23.5605969488, -46.7316643998, 1.0], [-23.5606730087, -46.7316299098, 1.0], [-23.5606434638, -46.7319662537, 1.0], [-23.5574830062, -46.7234581624, 1.0], [-23.5591359829, -46.7244201993, 1.0], [-23.559528706, -46.7241114923, 1.0], [-23.5635260563, -46.727610926, 1.0], [-23.5594793077, -46.7316764579, 1.0], [-23.5628040125, -46.7228232809, 1.0], [-23.5578569488, -46.7346557714, 1.0], [-23.5600644386, -46.7338667281, 1.0], [-23.5654357639, -46.731010018, 1.0], [-23.5612052289, -46.7237148624, 1.0], [-23.5605720972, -46.7243041936, 1.0], [-23.562262, -46.7369669722, 1.0], [-23.5596965984, -46.7277079246, 1.0], [-23.5599212268, -46.727350792, 1.0], [-23.5591244678, -46.72786982, 1.0], [-23.5628615314, -46.7227694134, 1.0], [-23.5600107588, -46.7323974276, 1.0], [-23.5606672223, -46.7316553361, 1.0], [-23.5604770039, -46.7309925598, 1.0], [-23.5590006582, -46.7197158296, 1.0], [-23.5610586412, -46.7306003901, 1.0], [-23.5644783333, -46.7194366667, 1.0], [-23.5624225871, -46.7322463207, 1.0], [-23.5569672017, -46.724350106, 1.0], [-23.5635008695, -46.7206501382, 1.0], [-23.5685536997, -46.7294424997, 1.0], [-23.5588492714, -46.7276983336, 1.0], [-23.5650467596, -46.7301622778, 1.0], [-23.5574724419, -46.7234682931, 1.0], [-23.567754, -46.7187768, 1.0], [-23.5678107862, -46.7207397351, 1.0], [-23.5574479173, -46.7234129731, 1.0], [-23.558469335, -46.7226686077, 1.0], [-23.5673571957, -46.7179373242, 1.0], [-23.5679714878, -46.7205184731, 1.0], [-23.5601671087, -46.7316809076, 1.0], [-23.5652758269, -46.7187660658, 1.0], [-23.5661117242, -46.7184442041, 1.0], [-23.5652506443, -46.7184666735, 1.0], [-23.5605868747, -46.7219023367, 1.0], [-23.5671433333, -46.732085, 1.0], [-23.5635828465, -46.7209093209, 1.0]],
+                {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
+            );
+        
+    
+            heat_map_96fefd2ef4a936c46bda397d13f4b6c5.addTo(map_cdfe7984a7291b3fdfe6c5a00d60179b);
+        
+    
+            map_cdfe7984a7291b3fdfe6c5a00d60179b.fitBounds(
+                [[-23.5688302997, -46.7369669722], [-23.5569672017, -46.7144421861]],
+                {}
+            );
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+            </div>
+            <div class="species-info">
+                <a href="https://www.inaturalist.org/observations/74515672" target="_blank">
+                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/121795262/medium.jpg" alt="Diopsittaca nobilis">
+                </a>
+                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=pedro1203" target="_blank">pedro1203</a>, cc-by-nc (2015-08-01)</p>
+            </div>
+        </div>
+        
+        <div class="species-container" id="Dryobates_spilogaster">
+            <div class="map-container">
+                <div class="map-title"><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&taxon_id=793073" target="_blank">37. Dryobates spilogaster</a></div>
+                <div class="subheader">Observações em Nível de Pesquisa: 1</div>
+                <div style="width: 100%; height: 400px;"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_481abfe289094fe7b703f5ccc5779726 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_481abfe289094fe7b703f5ccc5779726&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_481abfe289094fe7b703f5ccc5779726 = L.map(
+                &quot;map_481abfe289094fe7b703f5ccc5779726&quot;,
+                {
+                    center: [-23.5645336838, -46.719457269],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_afa5c84e746ee49162191a237afa4753 = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_afa5c84e746ee49162191a237afa4753.addTo(map_481abfe289094fe7b703f5ccc5779726);
+        
+    
+            var heat_map_bc11756842add9ec74c2043b02e61027 = L.heatLayer(
+                [[-23.5645336838, -46.719457269, 1.0]],
+                {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
+            );
+        
+    
+            heat_map_bc11756842add9ec74c2043b02e61027.addTo(map_481abfe289094fe7b703f5ccc5779726);
+        
+    
+            map_481abfe289094fe7b703f5ccc5779726.fitBounds(
+                [[-23.5645336838, -46.719457269], [-23.5645336838, -46.719457269]],
+                {}
+            );
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+            </div>
+            <div class="species-info">
+                <a href="https://www.inaturalist.org/observations/43481427" target="_blank">
+                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/68984696/medium.jpeg" alt="Dryobates spilogaster">
+                </a>
+                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2015-12-19)</p>
+            </div>
+        </div>
+        
+        <div class="species-container" id="Dryocopus_lineatus">
+            <div class="map-container">
+                <div class="map-title"><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&taxon_id=17858" target="_blank">38. Dryocopus lineatus</a></div>
+                <div class="subheader">Observações em Nível de Pesquisa: 22</div>
+                <div style="width: 100%; height: 400px;"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_c88d3838809abb16c042fdb9b85123e5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_c88d3838809abb16c042fdb9b85123e5&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_c88d3838809abb16c042fdb9b85123e5 = L.map(
+                &quot;map_c88d3838809abb16c042fdb9b85123e5&quot;,
+                {
+                    center: [-23.562493790245455, -46.72810464079546],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_48f56ddf2594a40553481d00a7dd83f2 = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_48f56ddf2594a40553481d00a7dd83f2.addTo(map_c88d3838809abb16c042fdb9b85123e5);
+        
+    
+            var heat_map_a68f922be34cea4abd997e4e2de803cc = L.heatLayer(
+                [[-23.5612347989, -46.72442815, 1.0], [-23.5566007637, -46.7276694733, 1.0], [-23.5603627439, -46.7257144061, 1.0], [-23.5669061717, -46.7304144315, 1.0], [-23.5652002048, -46.7298109175, 1.0], [-23.5598056642, -46.7352695832, 1.0], [-23.5655678131, -46.7314881353, 1.0], [-23.5604781078, -46.732955187, 1.0], [-23.5593549826, -46.737897006, 1.0], [-23.5623166667, -46.7292283333, 1.0], [-23.5617916667, -46.7340083333, 1.0], [-23.5641283333, -46.7294116667, 1.0], [-23.567754, -46.7187768, 1.0], [-23.5540895542, -46.7261895981, 1.0], [-23.5653249964, -46.7187124235, 1.0], [-23.5597516826, -46.7293084016, 1.0], [-23.5597483964, -46.7386372553, 1.0], [-23.5644690035, -46.7199504375, 1.0], [-23.5645382652, -46.719248855, 1.0], [-23.5664548757, -46.7185265198, 1.0], [-23.561936, -46.729105, 1.0], [-23.567048694, -46.7315511835, 1.0]],
+                {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
+            );
+        
+    
+            heat_map_a68f922be34cea4abd997e4e2de803cc.addTo(map_c88d3838809abb16c042fdb9b85123e5);
+        
+    
+            map_c88d3838809abb16c042fdb9b85123e5.fitBounds(
+                [[-23.567754, -46.7386372553], [-23.5540895542, -46.7185265198]],
+                {}
+            );
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+            </div>
+            <div class="species-info">
+                <a href="https://www.inaturalist.org/observations/43413647" target="_blank">
+                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/68880576/medium.jpeg" alt="Dryocopus lineatus">
+                </a>
+                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2015-08-29)</p>
+            </div>
+        </div>
+        
+        <div class="species-container" id="Egretta_thula">
+            <div class="map-container">
+                <div class="map-title"><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&taxon_id=4940" target="_blank">39. Egretta thula</a></div>
+                <div class="subheader">Observações em Nível de Pesquisa: 1</div>
+                <div style="width: 100%; height: 400px;"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_9319b699dddc1cfd1ae10560de840317 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_9319b699dddc1cfd1ae10560de840317&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_9319b699dddc1cfd1ae10560de840317 = L.map(
+                &quot;map_9319b699dddc1cfd1ae10560de840317&quot;,
+                {
+                    center: [-23.5546708273, -46.728886077],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3e42896c630cd76539a4ee25f276ab04 = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_3e42896c630cd76539a4ee25f276ab04.addTo(map_9319b699dddc1cfd1ae10560de840317);
+        
+    
+            var heat_map_29aaac5abd829ea203d10f0d1500195c = L.heatLayer(
+                [[-23.5546708273, -46.728886077, 1.0]],
+                {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
+            );
+        
+    
+            heat_map_29aaac5abd829ea203d10f0d1500195c.addTo(map_9319b699dddc1cfd1ae10560de840317);
+        
+    
+            map_9319b699dddc1cfd1ae10560de840317.fitBounds(
+                [[-23.5546708273, -46.728886077], [-23.5546708273, -46.728886077]],
+                {}
+            );
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+            </div>
+            <div class="species-info">
+                <a href="https://www.inaturalist.org/observations/132860853" target="_blank">
+                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/226217700/medium.jpg" alt="Egretta thula">
+                </a>
+                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=josev_ge" target="_blank">josev_ge</a>, cc-by-nc (2022-08-27)</p>
+            </div>
+        </div>
+        
+        <div class="species-container" id="Empidonomus_varius">
+            <div class="map-container">
+                <div class="map-title"><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&taxon_id=17060" target="_blank">40. Empidonomus varius</a></div>
+                <div class="subheader">Observações em Nível de Pesquisa: 4</div>
+                <div style="width: 100%; height: 400px;"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_4e2ca2adfc7323f23628fc5e4751cb3c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_4e2ca2adfc7323f23628fc5e4751cb3c&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_4e2ca2adfc7323f23628fc5e4751cb3c = L.map(
+                &quot;map_4e2ca2adfc7323f23628fc5e4751cb3c&quot;,
+                {
+                    center: [-23.5603399501, -46.727790837025],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2d5dfec063f5d4d76f4dff7713e3a3a9 = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_2d5dfec063f5d4d76f4dff7713e3a3a9.addTo(map_4e2ca2adfc7323f23628fc5e4751cb3c);
+        
+    
+            var heat_map_dcaae7f12f0272cc7283190e64fab8c5 = L.heatLayer(
+                [[-23.558304663, -46.7323236673, 1.0], [-23.5618462239, -46.7281316576, 1.0], [-23.5562057402, -46.7311483017, 1.0], [-23.5650031733, -46.7195597215, 1.0]],
+                {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
+            );
+        
+    
+            heat_map_dcaae7f12f0272cc7283190e64fab8c5.addTo(map_4e2ca2adfc7323f23628fc5e4751cb3c);
+        
+    
+            map_4e2ca2adfc7323f23628fc5e4751cb3c.fitBounds(
+                [[-23.5650031733, -46.7323236673], [-23.5562057402, -46.7195597215]],
+                {}
+            );
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+            </div>
+            <div class="species-info">
+                <a href="https://www.inaturalist.org/observations/64883309" target="_blank">
+                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/104382810/medium.jpeg" alt="Empidonomus varius">
+                </a>
+                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2016-11-26)</p>
+            </div>
+        </div>
+        <div class="bottom-nav"><a href="heatmaps_page_3.html">Anterior</a><a href="heatmaps_page_5.html">Próxima</a></div>
+    <script>
+        function navigateToSpecies() {
+            var select = document.getElementById('species-select');
+            var page = select.value;
+            if (page) {
+                window.location.href = page;
+            }
+        }
+    </script>
+    </body>
+    </html>
+    

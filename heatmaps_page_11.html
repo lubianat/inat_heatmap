@@ -1,0 +1,145 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Heatmaps - Página 11</title>
+        <style>
+            body { font-family: Arial, sans-serif; text-align: center; }
+            .map-container { margin-bottom: 20px; }
+            .map-title { font-size: 1.2em; margin-top: 20px; font-style: italic; }
+            .species-container { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+            .species-info { margin-left: 20px; text-align: left; }
+            .species-info img { max-width: 300px; height: auto; }
+            .subheader { font-size: 1em; margin-top: 15px; font-style: normal; }
+            .navbar { display: flex; justify-content: center; margin-bottom: 20px; }
+            .navbar select { font-size: 1em; padding: 5px; }
+            .bottom-nav { display: flex; justify-content: center; margin-top: 20px; }
+            .bottom-nav a { margin: 0 5px; text-decoration: none; font-size: 1.2em; padding: 10px 20px; background-color: #007BFF; color: white; border-radius: 5px; }
+            .bottom-nav a:hover { background-color: #0056b3; }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    </head>
+    <body>
+        <h2>Observações de aves no campus da USP via iNaturalist</h2>
+        <div class="navbar">
+            <select id="species-select" onchange="navigateToSpecies()">
+                <option value="">Selecione uma espécie</option>
+    <option value="heatmaps_page_1.html#Accipiter_striatus">Accipiter striatus</option><option value="heatmaps_page_1.html#Amazonetta_brasiliensis">Amazonetta brasiliensis</option><option value="heatmaps_page_1.html#Anhinga_anhinga">Anhinga anhinga</option><option value="heatmaps_page_1.html#Aramides_cajaneus">Aramides cajaneus</option><option value="heatmaps_page_1.html#Aramides_saracura">Aramides saracura</option><option value="heatmaps_page_1.html#Ardea_alba">Ardea alba</option><option value="heatmaps_page_1.html#Ardea_cocoi">Ardea cocoi</option><option value="heatmaps_page_1.html#Asio_stygius">Asio stygius</option><option value="heatmaps_page_1.html#Athene_cunicularia">Athene cunicularia</option><option value="heatmaps_page_1.html#Basileuterus_culicivorus">Basileuterus culicivorus</option><option value="heatmaps_page_2.html#Brotogeris_chiriri">Brotogeris chiriri</option><option value="heatmaps_page_2.html#Brotogeris_tirica">Brotogeris tirica</option><option value="heatmaps_page_2.html#Bubulcus_ibis">Bubulcus ibis</option><option value="heatmaps_page_2.html#Buteo_brachyurus">Buteo brachyurus</option><option value="heatmaps_page_2.html#Butorides_striata">Butorides striata</option><option value="heatmaps_page_2.html#Camptostoma_obsoletum">Camptostoma obsoletum</option><option value="heatmaps_page_2.html#Caracara_plancus">Caracara plancus</option><option value="heatmaps_page_2.html#Caracara_plancus_plancus">Caracara plancus plancus</option><option value="heatmaps_page_2.html#Celeus_flavescens">Celeus flavescens</option><option value="heatmaps_page_2.html#Celeus_flavescens_flavescens">Celeus flavescens flavescens</option><option value="heatmaps_page_3.html#Chaetura_meridionalis">Chaetura meridionalis</option><option value="heatmaps_page_3.html#Chloroceryle_amazona">Chloroceryle amazona</option><option value="heatmaps_page_3.html#Chlorophonia_cyanocephala">Chlorophonia cyanocephala</option><option value="heatmaps_page_3.html#Chlorostilbon_lucidus">Chlorostilbon lucidus</option><option value="heatmaps_page_3.html#Coereba_flaveola">Coereba flaveola</option><option value="heatmaps_page_3.html#Colaptes_campestris">Colaptes campestris</option><option value="heatmaps_page_3.html#Colaptes_campestris_campestris">Colaptes campestris campestris</option><option value="heatmaps_page_3.html#Colaptes_melanochloros">Colaptes melanochloros</option><option value="heatmaps_page_3.html#Columba_livia_domestica">Columba livia domestica</option><option value="heatmaps_page_3.html#Conirostrum_speciosum">Conirostrum speciosum</option><option value="heatmaps_page_4.html#Coragyps_atratus">Coragyps atratus</option><option value="heatmaps_page_4.html#Crotophaga_ani">Crotophaga ani</option><option value="heatmaps_page_4.html#Cyclarhis_gujanensis">Cyclarhis gujanensis</option><option value="heatmaps_page_4.html#Dacnis_cayana">Dacnis cayana</option><option value="heatmaps_page_4.html#Daptrius_chimachima">Daptrius chimachima</option><option value="heatmaps_page_4.html#Diopsittaca_nobilis">Diopsittaca nobilis</option><option value="heatmaps_page_4.html#Dryobates_spilogaster">Dryobates spilogaster</option><option value="heatmaps_page_4.html#Dryocopus_lineatus">Dryocopus lineatus</option><option value="heatmaps_page_4.html#Egretta_thula">Egretta thula</option><option value="heatmaps_page_4.html#Empidonomus_varius">Empidonomus varius</option><option value="heatmaps_page_5.html#Estrilda_astrild">Estrilda astrild</option><option value="heatmaps_page_5.html#Eupetomena_macroura">Eupetomena macroura</option><option value="heatmaps_page_5.html#Euphonia_chlorotica">Euphonia chlorotica</option><option value="heatmaps_page_5.html#Euphonia_violacea">Euphonia violacea</option><option value="heatmaps_page_5.html#Falco_femoralis">Falco femoralis</option><option value="heatmaps_page_5.html#Furnarius_rufus">Furnarius rufus</option><option value="heatmaps_page_5.html#Gallinula_galeata">Gallinula galeata</option><option value="heatmaps_page_5.html#Gnorimopsar_chopi">Gnorimopsar chopi</option><option value="heatmaps_page_5.html#Guira_guira">Guira guira</option><option value="heatmaps_page_5.html#Icterus_pyrrhopterus">Icterus pyrrhopterus</option><option value="heatmaps_page_6.html#Lepidocolaptes_angustirostris">Lepidocolaptes angustirostris</option><option value="heatmaps_page_6.html#Machetornis_rixosa">Machetornis rixosa</option><option value="heatmaps_page_6.html#Megaceryle_torquata">Megaceryle torquata</option><option value="heatmaps_page_6.html#Megarynchus_pitangua">Megarynchus pitangua</option><option value="heatmaps_page_6.html#Megascops_choliba">Megascops choliba</option><option value="heatmaps_page_6.html#Melanerpes_candidus">Melanerpes candidus</option><option value="heatmaps_page_6.html#Mesembrinibis_cayennensis">Mesembrinibis cayennensis</option><option value="heatmaps_page_6.html#Mimus_saturninus">Mimus saturninus</option><option value="heatmaps_page_6.html#Molothrus_bonariensis">Molothrus bonariensis</option><option value="heatmaps_page_6.html#Myiodynastes_maculatus">Myiodynastes maculatus</option><option value="heatmaps_page_7.html#Myiozetetes_similis">Myiozetetes similis</option><option value="heatmaps_page_7.html#Nannopterum_brasilianum">Nannopterum brasilianum</option><option value="heatmaps_page_7.html#Nycticorax_nycticorax">Nycticorax nycticorax</option><option value="heatmaps_page_7.html#Nyctidromus_albicollis">Nyctidromus albicollis</option><option value="heatmaps_page_7.html#Pachyramphus_validus">Pachyramphus validus</option><option value="heatmaps_page_7.html#Paroaria_coronata">Paroaria coronata</option><option value="heatmaps_page_7.html#Paroaria_dominicana">Paroaria dominicana</option><option value="heatmaps_page_7.html#Patagioenas_picazuro">Patagioenas picazuro</option><option value="heatmaps_page_7.html#Penelope_obscura">Penelope obscura</option><option value="heatmaps_page_7.html#Piaya_cayana">Piaya cayana</option><option value="heatmaps_page_8.html#Pipraeidea_melanonota">Pipraeidea melanonota</option><option value="heatmaps_page_8.html#Pitangus_sulphuratus">Pitangus sulphuratus</option><option value="heatmaps_page_8.html#Psittacara_leucophthalmus">Psittacara leucophthalmus</option><option value="heatmaps_page_8.html#Pyrocephalus_rubinus">Pyrocephalus rubinus</option><option value="heatmaps_page_8.html#Ramphastos_dicolorus">Ramphastos dicolorus</option><option value="heatmaps_page_8.html#Ramphastos_toco">Ramphastos toco</option><option value="heatmaps_page_8.html#Rupornis_magnirostris">Rupornis magnirostris</option><option value="heatmaps_page_8.html#Saltator_similis">Saltator similis</option><option value="heatmaps_page_8.html#Setophaga_pitiayumi">Setophaga pitiayumi</option><option value="heatmaps_page_8.html#Sicalis_flaveola">Sicalis flaveola</option><option value="heatmaps_page_9.html#Sirystes_sibilator">Sirystes sibilator</option><option value="heatmaps_page_9.html#Spizaetus_tyrannus">Spizaetus tyrannus</option><option value="heatmaps_page_9.html#Stilpnia_cayana">Stilpnia cayana</option><option value="heatmaps_page_9.html#Synallaxis_spixi">Synallaxis spixi</option><option value="heatmaps_page_9.html#Thalurania_glaucopis">Thalurania glaucopis</option><option value="heatmaps_page_9.html#Thamnophilus_caerulescens">Thamnophilus caerulescens</option><option value="heatmaps_page_9.html#Thraupis_palmarum">Thraupis palmarum</option><option value="heatmaps_page_9.html#Thraupis_sayaca">Thraupis sayaca</option><option value="heatmaps_page_9.html#Tityra_cayana">Tityra cayana</option><option value="heatmaps_page_9.html#Troglodytes_aedon">Troglodytes aedon</option><option value="heatmaps_page_10.html#Troglodytes_aedon_musculus">Troglodytes aedon musculus</option><option value="heatmaps_page_10.html#Turdus_amaurochalinus">Turdus amaurochalinus</option><option value="heatmaps_page_10.html#Turdus_flavipes">Turdus flavipes</option><option value="heatmaps_page_10.html#Turdus_leucomelas">Turdus leucomelas</option><option value="heatmaps_page_10.html#Turdus_rufiventris">Turdus rufiventris</option><option value="heatmaps_page_10.html#Tyrannus_melancholicus">Tyrannus melancholicus</option><option value="heatmaps_page_10.html#Tyrannus_melancholicus_melancholicus">Tyrannus melancholicus melancholicus</option><option value="heatmaps_page_10.html#Vanellus_chilensis">Vanellus chilensis</option><option value="heatmaps_page_10.html#Vireo_chivi">Vireo chivi</option><option value="heatmaps_page_10.html#Zenaida_auriculata">Zenaida auriculata</option><option value="heatmaps_page_11.html#Zonotrichia_capensis">Zonotrichia capensis</option>
+            </select>
+        </div>
+    
+        <div class="species-container" id="Zonotrichia_capensis">
+            <div class="map-container">
+                <div class="map-title"><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&taxon_id=9183" target="_blank">101. Zonotrichia capensis</a></div>
+                <div class="subheader">Observações em Nível de Pesquisa: 13</div>
+                <div style="width: 100%; height: 400px;"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_ff46649e6bf88abd291c9c237df1a8ad {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_ff46649e6bf88abd291c9c237df1a8ad&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_ff46649e6bf88abd291c9c237df1a8ad = L.map(
+                &quot;map_ff46649e6bf88abd291c9c237df1a8ad&quot;,
+                {
+                    center: [-23.559415330876924, -46.726263173915385],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2a6d9b57608e4a196a0ea32efde5e9aa = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_2a6d9b57608e4a196a0ea32efde5e9aa.addTo(map_ff46649e6bf88abd291c9c237df1a8ad);
+        
+    
+            var heat_map_406d3d63dfe795fe1b51cfdc2f6bda83 = L.heatLayer(
+                [[-23.5589527473, -46.7272920003, 1.0], [-23.5590487157, -46.7273912282, 1.0], [-23.559755094, -46.7233033032, 1.0], [-23.5592119661, -46.7244530527, 1.0], [-23.55700276, -46.7217520029, 1.0], [-23.5575709401, -46.7342946524, 1.0], [-23.5596449262, -46.7341468475, 1.0], [-23.5629696718, -46.7179133712, 1.0], [-23.5605346902, -46.7234567651, 1.0], [-23.5601217424, -46.7249892652, 1.0], [-23.5582064742, -46.7329577286, 1.0], [-23.5599479067, -46.7246527103, 1.0], [-23.5594316667, -46.7248183333, 1.0]],
+                {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
+            );
+        
+    
+            heat_map_406d3d63dfe795fe1b51cfdc2f6bda83.addTo(map_ff46649e6bf88abd291c9c237df1a8ad);
+        
+    
+            map_ff46649e6bf88abd291c9c237df1a8ad.fitBounds(
+                [[-23.5629696718, -46.7342946524], [-23.55700276, -46.7179133712]],
+                {}
+            );
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+            </div>
+            <div class="species-info">
+                <a href="https://www.inaturalist.org/observations/43726521" target="_blank">
+                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/69355809/medium.jpeg" alt="Zonotrichia capensis">
+                </a>
+                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2017-03-31)</p>
+            </div>
+        </div>
+        <div class="bottom-nav"><a href="heatmaps_page_10.html">Anterior</a></div>
+    <script>
+        function navigateToSpecies() {
+            var select = document.getElementById('species-select');
+            var page = select.value;
+            if (page) {
+                window.location.href = page;
+            }
+        }
+    </script>
+    </body>
+    </html>
+    
