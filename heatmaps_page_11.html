@@ -19,6 +19,7 @@
             .image-header { font-weight: bold; margin-top: 10px; }
             .image-row { display: flex; justify-content: space-around; align-items: center; }
             .species-description { margin-top: 20px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; }
+            .footer { margin-top: 40px; font-size: 0.9em; color: #555; }
         </style>
         <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
@@ -64,7 +65,7 @@
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_60deb23b234a57bf13d062cdca6be687 {
+                #map_ab8df6ea4e0e18926effe49da925e41f {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -79,14 +80,14 @@
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_60deb23b234a57bf13d062cdca6be687&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_ab8df6ea4e0e18926effe49da925e41f&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_60deb23b234a57bf13d062cdca6be687 = L.map(
-                &quot;map_60deb23b234a57bf13d062cdca6be687&quot;,
+            var map_ab8df6ea4e0e18926effe49da925e41f = L.map(
+                &quot;map_ab8df6ea4e0e18926effe49da925e41f&quot;,
                 {
                     center: [-23.559415330876924, -46.726263173915385],
                     crs: L.CRS.EPSG3857,
@@ -100,25 +101,25 @@
 
         
     
-            var tile_layer_302a7acf1253161691cd6e0156ab50e4 = L.tileLayer(
+            var tile_layer_e16655a5cd5f2c5a0d6f63ff95877882 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_302a7acf1253161691cd6e0156ab50e4.addTo(map_60deb23b234a57bf13d062cdca6be687);
+            tile_layer_e16655a5cd5f2c5a0d6f63ff95877882.addTo(map_ab8df6ea4e0e18926effe49da925e41f);
         
     
-            var heat_map_ac9282768c6bda0ef9451f7f0f924326 = L.heatLayer(
+            var heat_map_00f463e8e129ef37ece1e1f5d11c2f2a = L.heatLayer(
                 [[-23.5589527473, -46.7272920003, 1.0], [-23.5590487157, -46.7273912282, 1.0], [-23.559755094, -46.7233033032, 1.0], [-23.5592119661, -46.7244530527, 1.0], [-23.55700276, -46.7217520029, 1.0], [-23.5575709401, -46.7342946524, 1.0], [-23.5596449262, -46.7341468475, 1.0], [-23.5629696718, -46.7179133712, 1.0], [-23.5605346902, -46.7234567651, 1.0], [-23.5601217424, -46.7249892652, 1.0], [-23.5582064742, -46.7329577286, 1.0], [-23.5599479067, -46.7246527103, 1.0], [-23.5594316667, -46.7248183333, 1.0]],
                 {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
             );
         
     
-            heat_map_ac9282768c6bda0ef9451f7f0f924326.addTo(map_60deb23b234a57bf13d062cdca6be687);
+            heat_map_00f463e8e129ef37ece1e1f5d11c2f2a.addTo(map_ab8df6ea4e0e18926effe49da925e41f);
         
     
-            map_60deb23b234a57bf13d062cdca6be687.fitBounds(
+            map_ab8df6ea4e0e18926effe49da925e41f.fitBounds(
                 [[-23.5629696718, -46.7342946524], [-23.55700276, -46.7179133712]],
                 {}
             );
@@ -150,6 +151,13 @@
             </div>
         </div>
         <div class="bottom-nav"><a href="heatmaps_page_10.html">Anterior</a></div>
+    <div class="footer">
+        <p>Desenvolvido com ♥ por Tiago Lubiana.</p>
+        <p><a href="https://github.com/lubianat/inat_heatmap" target="_blank">Repositório no GitHub</a></p>
+        <p>Conteúdo da Wikipedia licenciado em <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA</a></p>
+        <p>Última atualização: 2024-05-23</p>
+    </div>
+    
     <script>
         function navigateToSpecies() {
             var select = document.getElementById('species-select');
