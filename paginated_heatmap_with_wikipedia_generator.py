@@ -3,6 +3,8 @@ import folium
 from folium.plugins import HeatMap
 import requests
 import math
+from tqdm import tqdm
+from concurrent.futures import ThreadPoolExecutor
 
 # Initialize variables for storing data
 latitudes = []
@@ -99,12 +101,47 @@ def generate_map_html(species, latitudes, longitudes):
     return m._repr_html_()
 
 
-# Determine pagination parameters
+# Function to get the first paragraph from Portuguese Wikipedia
+def get_wikipedia_intro(species_name):
+    url = f"https://pt.wikipedia.org/api/rest_v1/page/summary/{species_name.replace(' ', '_')}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        return data.get("extract_html", "Descrição não disponível.")
+    return "Descrição não disponível."
+
+
+# Function to fetch Wikipedia descriptions in parallel
+def fetch_wikipedia_descriptions(species_list):
+    species_descriptions = {}
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        futures = {
+            executor.submit(get_wikipedia_intro, species): species
+            for species in species_list
+        }
+        for future in tqdm(
+            futures, total=len(futures), desc="Fetching Wikipedia descriptions"
+        ):
+            species = futures[future]
+            try:
+                species_descriptions[species] = future.result()
+            except Exception as e:
+                species_descriptions[species] = "Descrição não disponível."
+                print(f"Error fetching description for {species}: {e}")
+    return species_descriptions
+
+
+# Pre-calculate species descriptions
 species_list = sorted(species_data.keys())
+print("Fetching Wikipedia descriptions...")
+species_descriptions = fetch_wikipedia_descriptions(species_list)
+
+# Determine pagination parameters
 species_per_page = 10
 total_pages = math.ceil(len(species_list) / species_per_page)
 
 # Create HTML content for each page
+print("Generating HTML pages...")
 for page_num in range(total_pages):
     html_content = f"""
     <!DOCTYPE html>
@@ -125,6 +162,8 @@ for page_num in range(total_pages):
             .bottom-nav a {{ margin: 0 5px; text-decoration: none; font-size: 1.2em; padding: 10px 20px; background-color: #007BFF; color: white; border-radius: 5px; }}
             .bottom-nav a:hover {{ background-color: #0056b3; }}
             .image-header {{ font-weight: bold; margin-top: 10px; }}
+            .image-row {{ display: flex; justify-content: space-around; align-items: center; }}
+            .species-description {{ margin-top: 20px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; }}
         </style>
         <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
@@ -215,6 +254,10 @@ for page_num in range(total_pages):
         ) = extract_observation_details(recent_observation)
 
         species_id_url = f"https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&taxon_id={species_info['taxon_id']}"
+        species_description = species_descriptions.get(
+            species, "Descrição não disponível."
+        )
+        wikipedia_link = f"https://pt.wikipedia.org/wiki/{species.replace(' ', '_')}"
 
         species_map_html = generate_map_html(species, latitudes, longitudes)
         species_anchor = species.replace(" ", "_")
@@ -226,16 +269,26 @@ for page_num in range(total_pages):
                 <div style="width: 100%; height: 400px;">{species_map_html}</div>
             </div>
             <div class="species-info">
-                <div class="image-header">Primeira Observação</div>
-                <a href="{first_observation_url}" target="_blank">
-                    <img src="{first_img_url}" alt="{species}">
-                </a>
-                <p><a href="{first_user_profile_url}" target="_blank">{first_user_name}</a>, {first_license} ({first_observation_date})</p>
-                <div class="image-header">Observação Mais Recente</div>
-                <a href="{recent_observation_url}" target="_blank">
-                    <img src="{recent_img_url}" alt="{species}">
-                </a>
-                <p><a href="{recent_user_profile_url}" target="_blank">{recent_user_name}</a>, {recent_license} ({recent_observation_date})</p>
+                <div class="image-row">
+                    <div>
+                        <div class="image-header">Primeira Observação</div>
+                        <a href="{first_observation_url}" target="_blank">
+                            <img src="{first_img_url}" alt="{species}">
+                        </a>
+                        <p><a href="{first_user_profile_url}" target="_blank">{first_user_name}</a>, {first_license} ({first_observation_date})</p>
+                    </div>
+                    <div>
+                        <div class="image-header">Observação Mais Recente</div>
+                        <a href="{recent_observation_url}" target="_blank">
+                            <img src="{recent_img_url}" alt="{species}">
+                        </a>
+                        <p><a href="{recent_user_profile_url}" target="_blank">{recent_user_name}</a>, {recent_license} ({recent_observation_date})</p>
+                    </div>
+                </div>
+                <div class="species-description">
+                    <p>{species_description}</p>
+                    <p><a href="{wikipedia_link}" target="_blank">Link para Wikipedia</a></p>
+                </div>
             </div>
         </div>
         """

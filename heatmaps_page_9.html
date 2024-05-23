@@ -16,6 +16,9 @@
             .bottom-nav { display: flex; justify-content: center; margin-top: 20px; }
             .bottom-nav a { margin: 0 5px; text-decoration: none; font-size: 1.2em; padding: 10px 20px; background-color: #007BFF; color: white; border-radius: 5px; }
             .bottom-nav a:hover { background-color: #0056b3; }
+            .image-header { font-weight: bold; margin-top: 10px; }
+            .image-row { display: flex; justify-content: space-around; align-items: center; }
+            .species-description { margin-top: 20px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; }
         </style>
         <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
@@ -61,7 +64,7 @@
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_3565da0f441a86aa057325948301bea0 {
+                #map_81272a4a02de064ffc96e5b48a1e8829 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -76,14 +79,14 @@
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_3565da0f441a86aa057325948301bea0&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_81272a4a02de064ffc96e5b48a1e8829&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_3565da0f441a86aa057325948301bea0 = L.map(
-                &quot;map_3565da0f441a86aa057325948301bea0&quot;,
+            var map_81272a4a02de064ffc96e5b48a1e8829 = L.map(
+                &quot;map_81272a4a02de064ffc96e5b48a1e8829&quot;,
                 {
                     center: [-23.5676847369, -46.7188453674],
                     crs: L.CRS.EPSG3857,
@@ -97,25 +100,25 @@
 
         
     
-            var tile_layer_97699fbebad1ccdbefa7316e8f5b1453 = L.tileLayer(
+            var tile_layer_232d89f85ac3364552447bb6097fd0d0 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_97699fbebad1ccdbefa7316e8f5b1453.addTo(map_3565da0f441a86aa057325948301bea0);
+            tile_layer_232d89f85ac3364552447bb6097fd0d0.addTo(map_81272a4a02de064ffc96e5b48a1e8829);
         
     
-            var heat_map_d6130bc9ac71e709bd41fb51be95de24 = L.heatLayer(
+            var heat_map_025a5f9fed4d129af9d1464ea0c7482e = L.heatLayer(
                 [[-23.5676847369, -46.7188453674, 1.0]],
                 {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
             );
         
     
-            heat_map_d6130bc9ac71e709bd41fb51be95de24.addTo(map_3565da0f441a86aa057325948301bea0);
+            heat_map_025a5f9fed4d129af9d1464ea0c7482e.addTo(map_81272a4a02de064ffc96e5b48a1e8829);
         
     
-            map_3565da0f441a86aa057325948301bea0.fitBounds(
+            map_81272a4a02de064ffc96e5b48a1e8829.fitBounds(
                 [[-23.5676847369, -46.7188453674], [-23.5676847369, -46.7188453674]],
                 {}
             );
@@ -124,10 +127,26 @@
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
             </div>
             <div class="species-info">
-                <a href="https://www.inaturalist.org/observations/72701238" target="_blank">
-                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/118576811/medium.jpeg" alt="Sirystes sibilator">
-                </a>
-                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=gui_lessa" target="_blank">gui_lessa</a>, cc-by-nc (2018-07-28)</p>
+                <div class="image-row">
+                    <div>
+                        <div class="image-header">Primeira Observação</div>
+                        <a href="https://www.inaturalist.org/observations/72701238" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/118576811/medium.jpeg" alt="Sirystes sibilator">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=gui_lessa" target="_blank">gui_lessa</a>, cc-by-nc (2018-07-28)</p>
+                    </div>
+                    <div>
+                        <div class="image-header">Observação Mais Recente</div>
+                        <a href="https://www.inaturalist.org/observations/72701238" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/118576811/medium.jpeg" alt="Sirystes sibilator">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=gui_lessa" target="_blank">gui_lessa</a>, cc-by-nc (2018-07-28)</p>
+                    </div>
+                </div>
+                <div class="species-description">
+                    <p>Descrição não disponível.</p>
+                    <p><a href="https://pt.wikipedia.org/wiki/Sirystes_sibilator" target="_blank">Link para Wikipedia</a></p>
+                </div>
             </div>
         </div>
         
@@ -162,7 +181,7 @@
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_e0ed1380731dc8d1ba8f1e899fcec691 {
+                #map_322bbccbd3f73b224909f861e8bda2cc {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -177,14 +196,14 @@
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_e0ed1380731dc8d1ba8f1e899fcec691&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_322bbccbd3f73b224909f861e8bda2cc&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_e0ed1380731dc8d1ba8f1e899fcec691 = L.map(
-                &quot;map_e0ed1380731dc8d1ba8f1e899fcec691&quot;,
+            var map_322bbccbd3f73b224909f861e8bda2cc = L.map(
+                &quot;map_322bbccbd3f73b224909f861e8bda2cc&quot;,
                 {
                     center: [-23.5663760997, -46.7303362997],
                     crs: L.CRS.EPSG3857,
@@ -198,25 +217,25 @@
 
         
     
-            var tile_layer_1b71826a866d681bd4d6c8b36d0ccaf1 = L.tileLayer(
+            var tile_layer_ff46ec2504d3da60831b936f3097726b = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_1b71826a866d681bd4d6c8b36d0ccaf1.addTo(map_e0ed1380731dc8d1ba8f1e899fcec691);
+            tile_layer_ff46ec2504d3da60831b936f3097726b.addTo(map_322bbccbd3f73b224909f861e8bda2cc);
         
     
-            var heat_map_aed8cd2bac1bfcdbbc1d82da6f5de85b = L.heatLayer(
+            var heat_map_4da386d2bd61489fb5d09ad209b4b294 = L.heatLayer(
                 [[-23.5663760997, -46.7303362997, 1.0]],
                 {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
             );
         
     
-            heat_map_aed8cd2bac1bfcdbbc1d82da6f5de85b.addTo(map_e0ed1380731dc8d1ba8f1e899fcec691);
+            heat_map_4da386d2bd61489fb5d09ad209b4b294.addTo(map_322bbccbd3f73b224909f861e8bda2cc);
         
     
-            map_e0ed1380731dc8d1ba8f1e899fcec691.fitBounds(
+            map_322bbccbd3f73b224909f861e8bda2cc.fitBounds(
                 [[-23.5663760997, -46.7303362997], [-23.5663760997, -46.7303362997]],
                 {}
             );
@@ -225,10 +244,26 @@
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
             </div>
             <div class="species-info">
-                <a href="https://www.inaturalist.org/observations/196662907" target="_blank">
-                    <img src="https://static.inaturalist.org/photos/346177326/medium.jpeg" alt="Spizaetus tyrannus">
-                </a>
-                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=augustonunes" target="_blank">augustonunes</a>, None (2023-09-18)</p>
+                <div class="image-row">
+                    <div>
+                        <div class="image-header">Primeira Observação</div>
+                        <a href="https://www.inaturalist.org/observations/196662907" target="_blank">
+                            <img src="https://static.inaturalist.org/photos/346177326/medium.jpeg" alt="Spizaetus tyrannus">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=augustonunes" target="_blank">augustonunes</a>, None (2023-09-18)</p>
+                    </div>
+                    <div>
+                        <div class="image-header">Observação Mais Recente</div>
+                        <a href="https://www.inaturalist.org/observations/196662907" target="_blank">
+                            <img src="https://static.inaturalist.org/photos/346177326/medium.jpeg" alt="Spizaetus tyrannus">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=augustonunes" target="_blank">augustonunes</a>, None (2023-09-18)</p>
+                    </div>
+                </div>
+                <div class="species-description">
+                    <p><p>O <b>gavião-pega-macaco</b>, também designado como <b>apacanim</b>, <b>cutiú-preto</b>, <b>gavião-de-penacho</b>, <b>papa-mico</b>, <b>uiruucotim</b>, <b>urubutinga</b> ou <b>urutaurana</b>, é uma águia da família dos acipitrídeos (<i>Accipitridae</i>) que ocorre do México à Argentina e em todo o Brasil. O gavião-pega-macaco, o gavião-pato e o gavião-de-penacho são as únicas três espécies de águias-açores presentes no Brasil.</p></p>
+                    <p><a href="https://pt.wikipedia.org/wiki/Spizaetus_tyrannus" target="_blank">Link para Wikipedia</a></p>
+                </div>
             </div>
         </div>
         
@@ -263,7 +298,7 @@
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_326e93b6fcbe015be75ab3c5b70173e6 {
+                #map_2f26fd395329cc638deb97a9e25b0a59 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -278,14 +313,14 @@
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_326e93b6fcbe015be75ab3c5b70173e6&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_2f26fd395329cc638deb97a9e25b0a59&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_326e93b6fcbe015be75ab3c5b70173e6 = L.map(
-                &quot;map_326e93b6fcbe015be75ab3c5b70173e6&quot;,
+            var map_2f26fd395329cc638deb97a9e25b0a59 = L.map(
+                &quot;map_2f26fd395329cc638deb97a9e25b0a59&quot;,
                 {
                     center: [-23.5638508542125, -46.727702249850005],
                     crs: L.CRS.EPSG3857,
@@ -299,25 +334,25 @@
 
         
     
-            var tile_layer_2b6a6522db3c54f0c625da51174a1926 = L.tileLayer(
+            var tile_layer_cb6ae9a4c838df1490e81ac2fcd799b6 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_2b6a6522db3c54f0c625da51174a1926.addTo(map_326e93b6fcbe015be75ab3c5b70173e6);
+            tile_layer_cb6ae9a4c838df1490e81ac2fcd799b6.addTo(map_2f26fd395329cc638deb97a9e25b0a59);
         
     
-            var heat_map_ecabf2321730116256b36f4d0b43b753 = L.heatLayer(
+            var heat_map_7c856150d2d4e017a79b8192521196b8 = L.heatLayer(
                 [[-23.5596004563, -46.7368443328, 1.0], [-23.5610603834, -46.7323116156, 1.0], [-23.5633182997, -46.7265968, 1.0], [-23.5650539799, -46.7298572433, 1.0], [-23.5650613555, -46.7298210334, 1.0], [-23.5650046047, -46.7297341317, 1.0], [-23.5661369025, -46.717879893, 1.0], [-23.5655708517, -46.718572949, 1.0]],
                 {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
             );
         
     
-            heat_map_ecabf2321730116256b36f4d0b43b753.addTo(map_326e93b6fcbe015be75ab3c5b70173e6);
+            heat_map_7c856150d2d4e017a79b8192521196b8.addTo(map_2f26fd395329cc638deb97a9e25b0a59);
         
     
-            map_326e93b6fcbe015be75ab3c5b70173e6.fitBounds(
+            map_2f26fd395329cc638deb97a9e25b0a59.fitBounds(
                 [[-23.5661369025, -46.7368443328], [-23.5596004563, -46.717879893]],
                 {}
             );
@@ -326,10 +361,26 @@
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
             </div>
             <div class="species-info">
-                <a href="https://www.inaturalist.org/observations/55194221" target="_blank">
-                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/87867927/medium.jpeg" alt="Stilpnia cayana">
-                </a>
-                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2015-08-29)</p>
+                <div class="image-row">
+                    <div>
+                        <div class="image-header">Primeira Observação</div>
+                        <a href="https://www.inaturalist.org/observations/55194221" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/87867927/medium.jpeg" alt="Stilpnia cayana">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2015-08-29)</p>
+                    </div>
+                    <div>
+                        <div class="image-header">Observação Mais Recente</div>
+                        <a href="https://www.inaturalist.org/observations/210951612" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/373022680/medium.jpeg" alt="Stilpnia cayana">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=brunoluka" target="_blank">brunoluka</a>, cc-by-nc (2024-04-25)</p>
+                    </div>
+                </div>
+                <div class="species-description">
+                    <p>Descrição não disponível.</p>
+                    <p><a href="https://pt.wikipedia.org/wiki/Stilpnia_cayana" target="_blank">Link para Wikipedia</a></p>
+                </div>
             </div>
         </div>
         
@@ -364,7 +415,7 @@
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_637146a49406c5c3506ddfa4b924186a {
+                #map_0d8a4eeaef3e6bf99713432f9d116270 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -379,14 +430,14 @@
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_637146a49406c5c3506ddfa4b924186a&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_0d8a4eeaef3e6bf99713432f9d116270&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_637146a49406c5c3506ddfa4b924186a = L.map(
-                &quot;map_637146a49406c5c3506ddfa4b924186a&quot;,
+            var map_0d8a4eeaef3e6bf99713432f9d116270 = L.map(
+                &quot;map_0d8a4eeaef3e6bf99713432f9d116270&quot;,
                 {
                     center: [-23.56775178965, -46.71877688555],
                     crs: L.CRS.EPSG3857,
@@ -400,25 +451,25 @@
 
         
     
-            var tile_layer_8f6d8fb3cfbd097140da4e9a96452b64 = L.tileLayer(
+            var tile_layer_bc25d0beeb4b2b6680382dea1ec03405 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_8f6d8fb3cfbd097140da4e9a96452b64.addTo(map_637146a49406c5c3506ddfa4b924186a);
+            tile_layer_bc25d0beeb4b2b6680382dea1ec03405.addTo(map_0d8a4eeaef3e6bf99713432f9d116270);
         
     
-            var heat_map_c51611d02e9df3a2e2ad5df8ad49e0c7 = L.heatLayer(
+            var heat_map_29704a828a7667538f159ee4118e475a = L.heatLayer(
                 [[-23.567754, -46.7187768, 1.0], [-23.5677495793, -46.7187769711, 1.0]],
                 {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
             );
         
     
-            heat_map_c51611d02e9df3a2e2ad5df8ad49e0c7.addTo(map_637146a49406c5c3506ddfa4b924186a);
+            heat_map_29704a828a7667538f159ee4118e475a.addTo(map_0d8a4eeaef3e6bf99713432f9d116270);
         
     
-            map_637146a49406c5c3506ddfa4b924186a.fitBounds(
+            map_0d8a4eeaef3e6bf99713432f9d116270.fitBounds(
                 [[-23.567754, -46.7187769711], [-23.5677495793, -46.7187768]],
                 {}
             );
@@ -427,10 +478,26 @@
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
             </div>
             <div class="species-info">
-                <a href="https://www.inaturalist.org/observations/113051461" target="_blank">
-                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/190996342/medium.jpg" alt="Synallaxis spixi">
-                </a>
-                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=gsbonfa" target="_blank">gsbonfa</a>, cc-by-nc (2018-05-18)</p>
+                <div class="image-row">
+                    <div>
+                        <div class="image-header">Primeira Observação</div>
+                        <a href="https://www.inaturalist.org/observations/113051461" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/190996342/medium.jpg" alt="Synallaxis spixi">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=gsbonfa" target="_blank">gsbonfa</a>, cc-by-nc (2018-05-18)</p>
+                    </div>
+                    <div>
+                        <div class="image-header">Observação Mais Recente</div>
+                        <a href="https://www.inaturalist.org/observations/66628503" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/107452271/medium.jpeg" alt="Synallaxis spixi">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=marcio_santos_ferreira" target="_blank">marcio_santos_ferreira</a>, cc-by-nc (2018-05-18)</p>
+                    </div>
+                </div>
+                <div class="species-description">
+                    <p><p>A <i>Synallaxis spixi</i> é uma espécie de ave sul-americana da família dos furnariídeos. Tais aves medem cerca de 16 cm de comprimento, com o dorso e cauda pardo-oliváceos, vértice e asa castanhos e mancha gular negra. Também são conhecidas pelos nomes de bentererê, bentereré, joão-penenê, joão-teneném, joão-tiriri e tenenê.</p></p>
+                    <p><a href="https://pt.wikipedia.org/wiki/Synallaxis_spixi" target="_blank">Link para Wikipedia</a></p>
+                </div>
             </div>
         </div>
         
@@ -465,7 +532,7 @@
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_a6c3a292a3135fa736b6b60cdf2f2dea {
+                #map_a9a46dfd7ede8129e258632333eefdd4 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -480,14 +547,14 @@
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_a6c3a292a3135fa736b6b60cdf2f2dea&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_a9a46dfd7ede8129e258632333eefdd4&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_a6c3a292a3135fa736b6b60cdf2f2dea = L.map(
-                &quot;map_a6c3a292a3135fa736b6b60cdf2f2dea&quot;,
+            var map_a9a46dfd7ede8129e258632333eefdd4 = L.map(
+                &quot;map_a9a46dfd7ede8129e258632333eefdd4&quot;,
                 {
                     center: [-23.5659708567, -46.7302692309],
                     crs: L.CRS.EPSG3857,
@@ -501,25 +568,25 @@
 
         
     
-            var tile_layer_1e5bfa952cf03b7b250b1e9c49791f8b = L.tileLayer(
+            var tile_layer_bdc7227f06acc8cbf32556a57945103d = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_1e5bfa952cf03b7b250b1e9c49791f8b.addTo(map_a6c3a292a3135fa736b6b60cdf2f2dea);
+            tile_layer_bdc7227f06acc8cbf32556a57945103d.addTo(map_a9a46dfd7ede8129e258632333eefdd4);
         
     
-            var heat_map_6514b33d4ff59441aa3720d55a57f3e5 = L.heatLayer(
+            var heat_map_5c4f6e581664300cdf0c5d7a2b8616bc = L.heatLayer(
                 [[-23.5659708567, -46.7302692309, 1.0]],
                 {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
             );
         
     
-            heat_map_6514b33d4ff59441aa3720d55a57f3e5.addTo(map_a6c3a292a3135fa736b6b60cdf2f2dea);
+            heat_map_5c4f6e581664300cdf0c5d7a2b8616bc.addTo(map_a9a46dfd7ede8129e258632333eefdd4);
         
     
-            map_a6c3a292a3135fa736b6b60cdf2f2dea.fitBounds(
+            map_a9a46dfd7ede8129e258632333eefdd4.fitBounds(
                 [[-23.5659708567, -46.7302692309], [-23.5659708567, -46.7302692309]],
                 {}
             );
@@ -528,10 +595,26 @@
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
             </div>
             <div class="species-info">
-                <a href="https://www.inaturalist.org/observations/117314572" target="_blank">
-                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/198111276/medium.jpeg" alt="Thalurania glaucopis">
-                </a>
-                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=cecimartins" target="_blank">cecimartins</a>, cc-by-nc (2022-05-16)</p>
+                <div class="image-row">
+                    <div>
+                        <div class="image-header">Primeira Observação</div>
+                        <a href="https://www.inaturalist.org/observations/117314572" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/198111276/medium.jpeg" alt="Thalurania glaucopis">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=cecimartins" target="_blank">cecimartins</a>, cc-by-nc (2022-05-16)</p>
+                    </div>
+                    <div>
+                        <div class="image-header">Observação Mais Recente</div>
+                        <a href="https://www.inaturalist.org/observations/117314572" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/198111276/medium.jpeg" alt="Thalurania glaucopis">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=cecimartins" target="_blank">cecimartins</a>, cc-by-nc (2022-05-16)</p>
+                    </div>
+                </div>
+                <div class="species-description">
+                    <p><p>O <b>beija-flor-de-fronte-violeta</b>, também conhecido por <b>beija-flor-de-testa-roxa</b>, <b>beija-flor-glauco</b>, <b>beija-flor-verde</b>, <b>beija-flor-tesoura-de-cabeça-violeta</b>, <b>picaflor-corona-azul</b> ou <b>tesoura-de-fronte-violeta</b>, é uma espécie de ave da família Trochilidae. Foi classificado por Johann Friedrich Gmelin em 1788, com a denominação de <i>Trochilus glaucopis</i>, e descrito na obra <i>Systema Naturae</i>. Seu nome científico significa "pássaro cinza azulado, filho do azul celeste".</p></p>
+                    <p><a href="https://pt.wikipedia.org/wiki/Thalurania_glaucopis" target="_blank">Link para Wikipedia</a></p>
+                </div>
             </div>
         </div>
         
@@ -566,7 +649,7 @@
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_dc6e6ed2f0fdba3b60590a693ebaa304 {
+                #map_0ababa3029961eed1996174abd471769 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -581,14 +664,14 @@
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_dc6e6ed2f0fdba3b60590a693ebaa304&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_0ababa3029961eed1996174abd471769&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_dc6e6ed2f0fdba3b60590a693ebaa304 = L.map(
-                &quot;map_dc6e6ed2f0fdba3b60590a693ebaa304&quot;,
+            var map_0ababa3029961eed1996174abd471769 = L.map(
+                &quot;map_0ababa3029961eed1996174abd471769&quot;,
                 {
                     center: [-23.56775178965, -46.71877688555],
                     crs: L.CRS.EPSG3857,
@@ -602,25 +685,25 @@
 
         
     
-            var tile_layer_78c00761207bbd32b1690f29bf081102 = L.tileLayer(
+            var tile_layer_cfb28682c7683e3732899222b140a1ff = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_78c00761207bbd32b1690f29bf081102.addTo(map_dc6e6ed2f0fdba3b60590a693ebaa304);
+            tile_layer_cfb28682c7683e3732899222b140a1ff.addTo(map_0ababa3029961eed1996174abd471769);
         
     
-            var heat_map_2486fd6b092dbc3e47a15fc1c404bc5c = L.heatLayer(
+            var heat_map_5f77848ccdf15a9e2352da15ad0560e9 = L.heatLayer(
                 [[-23.567754, -46.7187768, 1.0], [-23.5677495793, -46.7187769711, 1.0]],
                 {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
             );
         
     
-            heat_map_2486fd6b092dbc3e47a15fc1c404bc5c.addTo(map_dc6e6ed2f0fdba3b60590a693ebaa304);
+            heat_map_5f77848ccdf15a9e2352da15ad0560e9.addTo(map_0ababa3029961eed1996174abd471769);
         
     
-            map_dc6e6ed2f0fdba3b60590a693ebaa304.fitBounds(
+            map_0ababa3029961eed1996174abd471769.fitBounds(
                 [[-23.567754, -46.7187769711], [-23.5677495793, -46.7187768]],
                 {}
             );
@@ -629,10 +712,26 @@
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
             </div>
             <div class="species-info">
-                <a href="https://www.inaturalist.org/observations/113051460" target="_blank">
-                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/190996346/medium.jpg" alt="Thamnophilus caerulescens">
-                </a>
-                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=gsbonfa" target="_blank">gsbonfa</a>, cc-by-nc (2018-05-18)</p>
+                <div class="image-row">
+                    <div>
+                        <div class="image-header">Primeira Observação</div>
+                        <a href="https://www.inaturalist.org/observations/113051460" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/190996346/medium.jpg" alt="Thamnophilus caerulescens">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=gsbonfa" target="_blank">gsbonfa</a>, cc-by-nc (2018-05-18)</p>
+                    </div>
+                    <div>
+                        <div class="image-header">Observação Mais Recente</div>
+                        <a href="https://www.inaturalist.org/observations/66462672" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/107147992/medium.jpeg" alt="Thamnophilus caerulescens">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=marcio_santos_ferreira" target="_blank">marcio_santos_ferreira</a>, cc-by-nc (2018-05-18)</p>
+                    </div>
+                </div>
+                <div class="species-description">
+                    <p><p>A <b>choca-da-mata</b> é uma ave da família Thamnophilidae. Como seu nome indica, a choca-da-mata é vista frequentemente em bordas de matas e capoeiras entre ramos fechados das copas. Alimenta-se de artrópodes.</p></p>
+                    <p><a href="https://pt.wikipedia.org/wiki/Thamnophilus_caerulescens" target="_blank">Link para Wikipedia</a></p>
+                </div>
             </div>
         </div>
         
@@ -667,7 +766,7 @@
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_38ec5b050a0ed799975b15bec949c119 {
+                #map_efb76d2496dcab8fc7337da46f6072b8 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -682,14 +781,14 @@
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_38ec5b050a0ed799975b15bec949c119&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_efb76d2496dcab8fc7337da46f6072b8&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_38ec5b050a0ed799975b15bec949c119 = L.map(
-                &quot;map_38ec5b050a0ed799975b15bec949c119&quot;,
+            var map_efb76d2496dcab8fc7337da46f6072b8 = L.map(
+                &quot;map_efb76d2496dcab8fc7337da46f6072b8&quot;,
                 {
                     center: [-23.559659846925, -46.729817746650006],
                     crs: L.CRS.EPSG3857,
@@ -703,25 +802,25 @@
 
         
     
-            var tile_layer_5836dec4a9b80dd00612b17eec9f4b09 = L.tileLayer(
+            var tile_layer_3604369cd623660709539eb91bf4c307 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_5836dec4a9b80dd00612b17eec9f4b09.addTo(map_38ec5b050a0ed799975b15bec949c119);
+            tile_layer_3604369cd623660709539eb91bf4c307.addTo(map_efb76d2496dcab8fc7337da46f6072b8);
         
     
-            var heat_map_e08280c4d4e91958871790a9830c7a36 = L.heatLayer(
+            var heat_map_cf447eee7edb20e4381466ee05f3e4b6 = L.heatLayer(
                 [[-23.5590407952, -46.7275113182, 1.0], [-23.5610062974, -46.7315888647, 1.0], [-23.5611019245, -46.7238765682, 1.0], [-23.5575040941, -46.7337400651, 1.0], [-23.5575512586, -46.735030442, 1.0], [-23.5575594781, -46.7349916381, 1.0], [-23.5592631436, -46.7377709872, 1.0], [-23.5573930425, -46.7205671504, 1.0], [-23.5601090187, -46.7339170507, 1.0], [-23.5607696695, -46.7369173865, 1.0], [-23.5579865127, -46.7229530295, 1.0], [-23.5666329282, -46.7189484592, 1.0]],
                 {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
             );
         
     
-            heat_map_e08280c4d4e91958871790a9830c7a36.addTo(map_38ec5b050a0ed799975b15bec949c119);
+            heat_map_cf447eee7edb20e4381466ee05f3e4b6.addTo(map_efb76d2496dcab8fc7337da46f6072b8);
         
     
-            map_38ec5b050a0ed799975b15bec949c119.fitBounds(
+            map_efb76d2496dcab8fc7337da46f6072b8.fitBounds(
                 [[-23.5666329282, -46.7377709872], [-23.5573930425, -46.7189484592]],
                 {}
             );
@@ -730,10 +829,26 @@
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
             </div>
             <div class="species-info">
-                <a href="https://www.inaturalist.org/observations/51178213" target="_blank">
-                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/81296604/medium.jpeg" alt="Thraupis palmarum">
-                </a>
-                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2015-11-28)</p>
+                <div class="image-row">
+                    <div>
+                        <div class="image-header">Primeira Observação</div>
+                        <a href="https://www.inaturalist.org/observations/51178213" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/81296604/medium.jpeg" alt="Thraupis palmarum">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2015-11-28)</p>
+                    </div>
+                    <div>
+                        <div class="image-header">Observação Mais Recente</div>
+                        <a href="https://www.inaturalist.org/observations/210908556" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/372547557/medium.jpeg" alt="Thraupis palmarum">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=brunoluka" target="_blank">brunoluka</a>, cc-by-nc (2024-03-07)</p>
+                    </div>
+                </div>
+                <div class="species-description">
+                    <p><p>O <b>sanhaçu-verde</b>, <b>sanhaço-do-coqueiro</b> ou <b>sanhaço-pardo</b> é uma ave endêmica da região neotropical, pertencente à família dos tiês.</p></p>
+                    <p><a href="https://pt.wikipedia.org/wiki/Thraupis_palmarum" target="_blank">Link para Wikipedia</a></p>
+                </div>
             </div>
         </div>
         
@@ -768,7 +883,7 @@
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_8a5fde5f84bf03520b40e42239f37535 {
+                #map_464123c53d6a4d737818d828f9ba005a {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -783,14 +898,14 @@
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_8a5fde5f84bf03520b40e42239f37535&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_464123c53d6a4d737818d828f9ba005a&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_8a5fde5f84bf03520b40e42239f37535 = L.map(
-                &quot;map_8a5fde5f84bf03520b40e42239f37535&quot;,
+            var map_464123c53d6a4d737818d828f9ba005a = L.map(
+                &quot;map_464123c53d6a4d737818d828f9ba005a&quot;,
                 {
                     center: [-23.561503639, -46.728279415505],
                     crs: L.CRS.EPSG3857,
@@ -804,25 +919,25 @@
 
         
     
-            var tile_layer_759ae24381c27cfc198ada842a1d4c36 = L.tileLayer(
+            var tile_layer_f251e4c3d3a9f3b856e0a5313c9c9876 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_759ae24381c27cfc198ada842a1d4c36.addTo(map_8a5fde5f84bf03520b40e42239f37535);
+            tile_layer_f251e4c3d3a9f3b856e0a5313c9c9876.addTo(map_464123c53d6a4d737818d828f9ba005a);
         
     
-            var heat_map_52e6242620be69aa6652c9076a4c6c3d = L.heatLayer(
+            var heat_map_467aea4c80aa2ebc5cf64a265e56d60f = L.heatLayer(
                 [[-23.5604592565, -46.7257943388, 1.0], [-23.5574867579, -46.7348004506, 1.0], [-23.5591309743, -46.7375879232, 1.0], [-23.5592406869, -46.7377904075, 1.0], [-23.5593944558, -46.726799207, 1.0], [-23.5584960243, -46.7239697445, 1.0], [-23.5597724786, -46.7233086347, 1.0], [-23.5684222793, -46.7173020914, 1.0], [-23.558397835, -46.7320997756, 1.0], [-23.5580824404, -46.7321794608, 1.0], [-23.5622094527, -46.7212618329, 1.0], [-23.5577662194, -46.7327620912, 1.0], [-23.5590613755, -46.7300180045, 1.0], [-23.5604942299, -46.7323369783, 1.0], [-23.55824583, -46.7317846784, 1.0], [-23.5650325859, -46.7298420269, 1.0], [-23.5650477925, -46.7297942396, 1.0], [-23.5589834052, -46.7272167674, 1.0], [-23.565530638, -46.7308540167, 1.0], [-23.5661566667, -46.7180183333, 1.0], [-23.5659716667, -46.731765, 1.0], [-23.5591341377, -46.7225664739, 1.0], [-23.5596609297, -46.7344859987, 1.0], [-23.5574107531, -46.7342771022, 1.0], [-23.5598153626, -46.7230082017, 1.0], [-23.5657407931, -46.7307249504, 1.0], [-23.5586868382, -46.7251376029, 1.0], [-23.5617574929, -46.7179109894, 1.0], [-23.5700572033, -46.7372607492, 1.0], [-23.5568705305, -46.7282111725, 1.0], [-23.5602081551, -46.7318627339, 1.0], [-23.5574625139, -46.7235350075, 1.0], [-23.5594859857, -46.7229717855, 1.0], [-23.5588735142, -46.7309566243, 1.0], [-23.5645029404, -46.731204583, 1.0], [-23.5659492642, -46.7309114182, 1.0], [-23.5667292207, -46.7174174068, 1.0], [-23.56823, -46.7175116667, 1.0], [-23.5643042811, -46.7307570577, 1.0], [-23.5618825921, -46.7331790924, 1.0]],
                 {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
             );
         
     
-            heat_map_52e6242620be69aa6652c9076a4c6c3d.addTo(map_8a5fde5f84bf03520b40e42239f37535);
+            heat_map_467aea4c80aa2ebc5cf64a265e56d60f.addTo(map_464123c53d6a4d737818d828f9ba005a);
         
     
-            map_8a5fde5f84bf03520b40e42239f37535.fitBounds(
+            map_464123c53d6a4d737818d828f9ba005a.fitBounds(
                 [[-23.5700572033, -46.7377904075], [-23.5568705305, -46.7173020914]],
                 {}
             );
@@ -831,10 +946,26 @@
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
             </div>
             <div class="species-info">
-                <a href="https://www.inaturalist.org/observations/8915819" target="_blank">
-                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/12003321/medium.jpeg" alt="Thraupis sayaca">
-                </a>
-                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=pedroabilleira" target="_blank">pedroabilleira</a>, cc-by-nc (2017-11-23)</p>
+                <div class="image-row">
+                    <div>
+                        <div class="image-header">Primeira Observação</div>
+                        <a href="https://www.inaturalist.org/observations/8915819" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/12003321/medium.jpeg" alt="Thraupis sayaca">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=pedroabilleira" target="_blank">pedroabilleira</a>, cc-by-nc (2017-11-23)</p>
+                    </div>
+                    <div>
+                        <div class="image-header">Observação Mais Recente</div>
+                        <a href="https://www.inaturalist.org/observations/210442265" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/372214902/medium.jpg" alt="Thraupis sayaca">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=josev_ge" target="_blank">josev_ge</a>, cc-by-nc (2024-04-26)</p>
+                    </div>
+                </div>
+                <div class="species-description">
+                    <p><p>O <b>sanhaçu-cinzento</b>, também conhecido como <b>sanhaçu-do-mamoeiro</b>, <b>sanhaçu-azul</b> ou ainda <b>pipira-azul</b> é um pássaro da família Thraupidae, nativo da Argentina, Brasil, Colômbia, Paraguai, Peru e Uruguai. O sanhaçu-cinzento é uma das aves mais comuns do Brasil.</p></p>
+                    <p><a href="https://pt.wikipedia.org/wiki/Thraupis_sayaca" target="_blank">Link para Wikipedia</a></p>
+                </div>
             </div>
         </div>
         
@@ -869,7 +1000,7 @@
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_9bfad616c47c207b8c418e5074b69d88 {
+                #map_ce6e63363b2207979f09f2a0501ae88f {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -884,14 +1015,14 @@
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_9bfad616c47c207b8c418e5074b69d88&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_ce6e63363b2207979f09f2a0501ae88f&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_9bfad616c47c207b8c418e5074b69d88 = L.map(
-                &quot;map_9bfad616c47c207b8c418e5074b69d88&quot;,
+            var map_ce6e63363b2207979f09f2a0501ae88f = L.map(
+                &quot;map_ce6e63363b2207979f09f2a0501ae88f&quot;,
                 {
                     center: [-23.5659765422, -46.7303530681],
                     crs: L.CRS.EPSG3857,
@@ -905,25 +1036,25 @@
 
         
     
-            var tile_layer_2379ba6b26511888e0515e26d5ca32ba = L.tileLayer(
+            var tile_layer_0ec7e6163722933aa0dd2b2fce13a293 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_2379ba6b26511888e0515e26d5ca32ba.addTo(map_9bfad616c47c207b8c418e5074b69d88);
+            tile_layer_0ec7e6163722933aa0dd2b2fce13a293.addTo(map_ce6e63363b2207979f09f2a0501ae88f);
         
     
-            var heat_map_02a4406455483f9c426ce416aaced097 = L.heatLayer(
+            var heat_map_07a4d064a87c6cf18640686a2f021284 = L.heatLayer(
                 [[-23.5659765422, -46.7303530681, 1.0]],
                 {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
             );
         
     
-            heat_map_02a4406455483f9c426ce416aaced097.addTo(map_9bfad616c47c207b8c418e5074b69d88);
+            heat_map_07a4d064a87c6cf18640686a2f021284.addTo(map_ce6e63363b2207979f09f2a0501ae88f);
         
     
-            map_9bfad616c47c207b8c418e5074b69d88.fitBounds(
+            map_ce6e63363b2207979f09f2a0501ae88f.fitBounds(
                 [[-23.5659765422, -46.7303530681], [-23.5659765422, -46.7303530681]],
                 {}
             );
@@ -932,10 +1063,26 @@
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
             </div>
             <div class="species-info">
-                <a href="https://www.inaturalist.org/observations/186242714" target="_blank">
-                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/325430487/medium.jpg" alt="Tityra cayana">
-                </a>
-                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=edgar_crispino" target="_blank">edgar_crispino</a>, cc-by-nc (2019-10-08)</p>
+                <div class="image-row">
+                    <div>
+                        <div class="image-header">Primeira Observação</div>
+                        <a href="https://www.inaturalist.org/observations/186242714" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/325430487/medium.jpg" alt="Tityra cayana">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=edgar_crispino" target="_blank">edgar_crispino</a>, cc-by-nc (2019-10-08)</p>
+                    </div>
+                    <div>
+                        <div class="image-header">Observação Mais Recente</div>
+                        <a href="https://www.inaturalist.org/observations/186242714" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/325430487/medium.jpg" alt="Tityra cayana">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=edgar_crispino" target="_blank">edgar_crispino</a>, cc-by-nc (2019-10-08)</p>
+                    </div>
+                </div>
+                <div class="species-description">
+                    <p><p>O <b>anambé-branco-de-rabo-preto</b> é uma espécie sul-americana de pássaro anambé. Tais animais medem cerca de 21 cm de comprimento.</p></p>
+                    <p><a href="https://pt.wikipedia.org/wiki/Tityra_cayana" target="_blank">Link para Wikipedia</a></p>
+                </div>
             </div>
         </div>
         
@@ -970,7 +1117,7 @@
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_2a911988f211021ba199862b6e3f08fb {
+                #map_be9b83cc76d95cb1320b47fea9a468ac {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -985,14 +1132,14 @@
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_2a911988f211021ba199862b6e3f08fb&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_be9b83cc76d95cb1320b47fea9a468ac&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_2a911988f211021ba199862b6e3f08fb = L.map(
-                &quot;map_2a911988f211021ba199862b6e3f08fb&quot;,
+            var map_be9b83cc76d95cb1320b47fea9a468ac = L.map(
+                &quot;map_be9b83cc76d95cb1320b47fea9a468ac&quot;,
                 {
                     center: [-23.561350929794738, -46.72777395808422],
                     crs: L.CRS.EPSG3857,
@@ -1006,25 +1153,25 @@
 
         
     
-            var tile_layer_b461576c1ae4822661453e8024dbb36b = L.tileLayer(
+            var tile_layer_a0d3a330a59b9e09a3f3ed230617fe07 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_b461576c1ae4822661453e8024dbb36b.addTo(map_2a911988f211021ba199862b6e3f08fb);
+            tile_layer_a0d3a330a59b9e09a3f3ed230617fe07.addTo(map_be9b83cc76d95cb1320b47fea9a468ac);
         
     
-            var heat_map_5436bcbcedfcb896c14e6afcae86e399 = L.heatLayer(
+            var heat_map_a68ae0f6adfdb3968c639f26ba0404ea = L.heatLayer(
                 [[-23.5600422075, -46.7280053397, 1.0], [-23.5620386556, -46.7279048639, 1.0], [-23.5647607696, -46.7228974929, 1.0], [-23.5641444744, -46.7304968835, 1.0], [-23.5596990868, -46.7335445732, 1.0], [-23.558750736, -46.7168327308, 1.0], [-23.5665366857, -46.7309230416, 1.0], [-23.558675, -46.727395, 1.0], [-23.5596311642, -46.7375263639, 1.0], [-23.5591138825, -46.7304286366, 1.0], [-23.5651267687, -46.7234428924, 1.0], [-23.5586564521, -46.7169701642, 1.0], [-23.5574717914, -46.7341559019, 1.0], [-23.559557987, -46.7339055518, 1.0], [-23.5648224, -46.729984, 1.0], [-23.5631834308, -46.7300579571, 1.0], [-23.5567298326, -46.7245714962, 1.0], [-23.56115549, -46.7304434154, 1.0], [-23.5655708512, -46.7182188985, 1.0]],
                 {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
             );
         
     
-            heat_map_5436bcbcedfcb896c14e6afcae86e399.addTo(map_2a911988f211021ba199862b6e3f08fb);
+            heat_map_a68ae0f6adfdb3968c639f26ba0404ea.addTo(map_be9b83cc76d95cb1320b47fea9a468ac);
         
     
-            map_2a911988f211021ba199862b6e3f08fb.fitBounds(
+            map_be9b83cc76d95cb1320b47fea9a468ac.fitBounds(
                 [[-23.5665366857, -46.7375263639], [-23.5567298326, -46.7168327308]],
                 {}
             );
@@ -1033,10 +1180,26 @@
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
             </div>
             <div class="species-info">
-                <a href="https://www.inaturalist.org/observations/85525960" target="_blank">
-                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/140728166/medium.jpeg" alt="Troglodytes aedon">
-                </a>
-                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2015-11-28)</p>
+                <div class="image-row">
+                    <div>
+                        <div class="image-header">Primeira Observação</div>
+                        <a href="https://www.inaturalist.org/observations/85525960" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/140728166/medium.jpeg" alt="Troglodytes aedon">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2015-11-28)</p>
+                    </div>
+                    <div>
+                        <div class="image-header">Observação Mais Recente</div>
+                        <a href="https://www.inaturalist.org/observations/214888142" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/379869601/medium.jpeg" alt="Troglodytes aedon">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=danielskatz" target="_blank">danielskatz</a>, cc-by (2024-05-10)</p>
+                    </div>
+                </div>
+                <div class="species-description">
+                    <p><p><i><b>Troglodytes aedon,</b></i> popularmente conhecida como <b>corruíra</b>, <b>curruíra</b>, <b>cambaxirra</b>, <b>correte</b>, <b>maria-judia</b>, <b>currila</b>, <b>cambaxirra</b>, <b>cambuxirra</b>, <b>garrincha</b>, <b>cutipuruí</b>, <b>rouxinol</b>, <b>corruíra-de-casa</b>, <b>carriça</b>, <b>garriça</b>, <b>curuíra</b>, <b>coroíra</b>, <b>curreca</b>, <b>chirachola</b> e <b>carruíra</b>, é uma espécie de ave passeriforme da família dos trogloditídeos, que habita uma grande parte das Américas. Apresenta cor em vários tons de marrom. Mede aproximadamente 12cm do bico até a cauda. A espécie <i>T. aedon</i> era descrita como habitando quase toda a América, exceto o Ártico, mas recentemente foi proposta a subdivisão da espécie em duas, sendo a outra <i>Troglodytes musculus,</i> abrangendo as populações da América Central e América do Sul, embora a questão permaneça polêmica.</p></p>
+                    <p><a href="https://pt.wikipedia.org/wiki/Troglodytes_aedon" target="_blank">Link para Wikipedia</a></p>
+                </div>
             </div>
         </div>
         <div class="bottom-nav"><a href="heatmaps_page_8.html">Anterior</a><a href="heatmaps_page_10.html">Próxima</a></div>

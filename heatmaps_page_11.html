@@ -16,6 +16,9 @@
             .bottom-nav { display: flex; justify-content: center; margin-top: 20px; }
             .bottom-nav a { margin: 0 5px; text-decoration: none; font-size: 1.2em; padding: 10px 20px; background-color: #007BFF; color: white; border-radius: 5px; }
             .bottom-nav a:hover { background-color: #0056b3; }
+            .image-header { font-weight: bold; margin-top: 10px; }
+            .image-row { display: flex; justify-content: space-around; align-items: center; }
+            .species-description { margin-top: 20px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; }
         </style>
         <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
@@ -61,7 +64,7 @@
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_ff46649e6bf88abd291c9c237df1a8ad {
+                #map_60deb23b234a57bf13d062cdca6be687 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -76,14 +79,14 @@
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_ff46649e6bf88abd291c9c237df1a8ad&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_60deb23b234a57bf13d062cdca6be687&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_ff46649e6bf88abd291c9c237df1a8ad = L.map(
-                &quot;map_ff46649e6bf88abd291c9c237df1a8ad&quot;,
+            var map_60deb23b234a57bf13d062cdca6be687 = L.map(
+                &quot;map_60deb23b234a57bf13d062cdca6be687&quot;,
                 {
                     center: [-23.559415330876924, -46.726263173915385],
                     crs: L.CRS.EPSG3857,
@@ -97,25 +100,25 @@
 
         
     
-            var tile_layer_2a6d9b57608e4a196a0ea32efde5e9aa = L.tileLayer(
+            var tile_layer_302a7acf1253161691cd6e0156ab50e4 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_2a6d9b57608e4a196a0ea32efde5e9aa.addTo(map_ff46649e6bf88abd291c9c237df1a8ad);
+            tile_layer_302a7acf1253161691cd6e0156ab50e4.addTo(map_60deb23b234a57bf13d062cdca6be687);
         
     
-            var heat_map_406d3d63dfe795fe1b51cfdc2f6bda83 = L.heatLayer(
+            var heat_map_ac9282768c6bda0ef9451f7f0f924326 = L.heatLayer(
                 [[-23.5589527473, -46.7272920003, 1.0], [-23.5590487157, -46.7273912282, 1.0], [-23.559755094, -46.7233033032, 1.0], [-23.5592119661, -46.7244530527, 1.0], [-23.55700276, -46.7217520029, 1.0], [-23.5575709401, -46.7342946524, 1.0], [-23.5596449262, -46.7341468475, 1.0], [-23.5629696718, -46.7179133712, 1.0], [-23.5605346902, -46.7234567651, 1.0], [-23.5601217424, -46.7249892652, 1.0], [-23.5582064742, -46.7329577286, 1.0], [-23.5599479067, -46.7246527103, 1.0], [-23.5594316667, -46.7248183333, 1.0]],
                 {&quot;blur&quot;: 15, &quot;maxZoom&quot;: 18, &quot;minOpacity&quot;: 0.5, &quot;radius&quot;: 30}
             );
         
     
-            heat_map_406d3d63dfe795fe1b51cfdc2f6bda83.addTo(map_ff46649e6bf88abd291c9c237df1a8ad);
+            heat_map_ac9282768c6bda0ef9451f7f0f924326.addTo(map_60deb23b234a57bf13d062cdca6be687);
         
     
-            map_ff46649e6bf88abd291c9c237df1a8ad.fitBounds(
+            map_60deb23b234a57bf13d062cdca6be687.fitBounds(
                 [[-23.5629696718, -46.7342946524], [-23.55700276, -46.7179133712]],
                 {}
             );
@@ -124,10 +127,26 @@
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
             </div>
             <div class="species-info">
-                <a href="https://www.inaturalist.org/observations/43726521" target="_blank">
-                    <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/69355809/medium.jpeg" alt="Zonotrichia capensis">
-                </a>
-                <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2017-03-31)</p>
+                <div class="image-row">
+                    <div>
+                        <div class="image-header">Primeira Observação</div>
+                        <a href="https://www.inaturalist.org/observations/43726521" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/69355809/medium.jpeg" alt="Zonotrichia capensis">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=fredmachado" target="_blank">fredmachado</a>, cc-by-nc (2017-03-31)</p>
+                    </div>
+                    <div>
+                        <div class="image-header">Observação Mais Recente</div>
+                        <a href="https://www.inaturalist.org/observations/205998184" target="_blank">
+                            <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/364303322/medium.jpeg" alt="Zonotrichia capensis">
+                        </a>
+                        <p><a href="https://www.inaturalist.org/observations?iconic_taxa=Aves&place_id=125852&subview=map&user_id=leobreder" target="_blank">leobreder</a>, cc-by-nc (2024-04-05)</p>
+                    </div>
+                </div>
+                <div class="species-description">
+                    <p><p>O <b>tico-tico</b> é uma ave da ordem Passeriformes, família Emberizidae. Distingue-se pela sua coloração rajada de marrom, negro e cinza e pelo seu topete. Tem uma larga área de ocorrência nas Américas que vai da Terra do Fogo até o sul do México, evitando florestas densas. No Brasil também é conhecido como <b>maria-judia</b>, <b>salta-caminho</b> e <b>jesus-meu-deus</b>.</p></p>
+                    <p><a href="https://pt.wikipedia.org/wiki/Zonotrichia_capensis" target="_blank">Link para Wikipedia</a></p>
+                </div>
             </div>
         </div>
         <div class="bottom-nav"><a href="heatmaps_page_10.html">Anterior</a></div>
